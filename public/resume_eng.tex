@@ -1,0 +1,218 @@
+\documentclass[a4paper,10pt]{article}
+
+% Packages
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{fontawesome5}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{tikz}
+\usepackage{lmodern}  
+
+% Define custom colors
+\definecolor{primary}{RGB}{11, 25, 47}
+\definecolor{darkgray}{RGB}{50, 50, 50}
+\definecolor{lightgray}{RGB}{245, 245, 245}
+\definecolor{linkcolor}{RGB}{70, 130, 210}
+
+% Configure hyperlinks - updated for better clickability
+\hypersetup{
+  colorlinks=true,
+  linkcolor=linkcolor,
+  filecolor=linkcolor,
+  urlcolor=linkcolor,
+  citecolor=linkcolor,
+  pdftitle={Lucian Medrihan CV},
+  pdfauthor={Lucian Medrihan},
+  pdfborder={0 0 1},
+  breaklinks=true,
+  bookmarksopen=true,
+  bookmarksnumbered=true
+}
+
+
+
+% Page geometry
+\geometry{
+  top=0.6cm,
+  bottom=0.6cm,
+  left=1cm,
+  right=1cm
+}
+
+% Remove paragraph indentation
+\setlength{\parindent}{0pt}
+
+% Section formatting
+\titleformat{\section}
+  {\large\bfseries\color{primary}}
+  {}{0em}{}[\titlerule]
+\titlespacing{\section}{0pt}{6pt}{3pt}
+
+% Skills formatting
+\newcommand{\skill}[1]{
+  \colorbox{lightgray}{\footnotesize #1}
+}
+
+% Timeline dot
+\newcommand{\timelinedot}{
+  \tikz\draw[primary, fill=primary] (0,0) circle (2pt);
+}
+
+% Experience item
+\newcommand{\experienceitem}[5]{
+  \timelinedot~\textbf{#1}\\
+  \textit{#2} \hfill \textit{#3}\\
+  #4\\
+  \begin{itemize}[leftmargin=1em,noitemsep,topsep=0pt,parsep=0pt]
+    #5
+  \end{itemize}
+}
+
+
+\newcommand{\projectitem}[5]{
+  \textbf{#1} \hfill \textit{#2}\\
+  #3 \hfill 
+  \ifnum\pdfstrcmp{#4}{null}=0\else\href{#4}{\faGlobe}\fi
+  \ifnum\pdfstrcmp{#5}{null}=0\else~\href{#5}{\faGithub}\fi\\
+  \begin{itemize}[leftmargin=1em,noitemsep,topsep=0pt,parsep=0pt]
+}
+
+% Rating stars
+\newcommand{\rating}[1]{
+  \foreach \n in {1,...,5}{
+    \ifnum\n>#1
+      \textcolor{lightgray}{$\star$}
+    \else
+      \textcolor{primary}{$\star$}
+    \fi
+  }
+}
+
+\begin{document}
+
+% Start two-column layout
+\begin{minipage}[t]{0.33\textwidth}
+  % Left column content
+  \begin{center}
+    {\fontsize{21}{20}\selectfont\textbf{\textcolor{primary}{Lucian Medrihan}}}\\
+    \vspace{0.2cm}
+    {\large Senior Full Stack Engineer}
+  \end{center}
+  \section{About Me}
+  Passionate Software Engineer with Full Stack development experience, which began by exploring Ethical Hacking at age 12.
+  My career spans from GIS applications to management systems, with a focus on machine learning projects. 
+  
+  I have contributed to projects for SIAN and ESA, demonstrating strong problem-solving capabilities.
+  \section{Contact}
+
+\begin{tabular}{@{}p{0.1\textwidth}p{0.9\textwidth}@{}}
+    \faPhone & \href{tel:+393272898921}{+39 3272898921} \\
+    \faEnvelope & \href{mailto:medrihanlucian@gmail.com}{medrihanlucian@gmail.com} \\
+    \faGlobe & \href{https://1vcian.github.io/Portfolio/}{1vcian.github.io/Portfolio} \\
+    \faLinkedin & \href{https://linkedin.com/in/lume}{linkedin.com/in/lume} \\
+    \faGithub & \href{https://github.com/1vcian}{github.com/1vcian} \\
+    \faMapMarker & Rome, Italy \\
+  \end{tabular}
+  
+  \section{Skills}
+  \textbf{Technical Skills:} Proficient in \textcolor{linkcolor}{\textbf{Python}}, JavaScript, and Node.js, with extensive experience in \textcolor{linkcolor}{\textbf{React.js}}, \textcolor{linkcolor}{\textbf{Angular.js}}, Flask, and FastAPI. Expertise in \textcolor{linkcolor}{\textbf{full-stack development}} using modern web technologies, complemented by strong skills in \textcolor{linkcolor}{\textbf{Docker}}, \textcolor{linkcolor}{\textbf{AWS}}, Cloudfront, and cloud solutions.\\
+  
+  \textbf{Additional Skills:} \textcolor{linkcolor}{\textbf{GIS}}, \textcolor{linkcolor}{\textbf{Machine Learning}}, \textcolor{linkcolor}{\textbf{LLMs}}, Image Processing, Tailwind CSS, Bootstrap, Openlayers, Linux commands, \textcolor{linkcolor}{\textbf{Cybersecurity}}, Geopandas, JQuery, network programming.\\
+  
+  \textbf{Soft Skills:} Proven ability to solve \textcolor{linkcolor}{\textbf{complex problems}}, manage projects effectively, and \textcolor{linkcolor}{\textbf{lead teams}}. Strong time management, critical thinking, and attention to detail.
+  
+  \section{Education}
+  \timelinedot~\textbf{Computer and Automation Engineering}\\
+  \textit{Sapienza University of Rome}\\
+  \textit{Graduated: 03/2025}\\
+  
+
+  \section{Languages}
+  \begin{tabular}{@{}p{0.4\textwidth}p{0.6\textwidth}@{}}
+    Italian & \rating{5} \\
+    Romanian & \rating{5} \\
+    English & \rating{4} \\
+  \end{tabular}
+
+  \section{Achievements \& Activities}
+  \begin{itemize}[leftmargin=1em]
+    \item \textcolor{linkcolor}{\textbf{Winner of Google Workshop}} for UniverCity project, presented at Google Tel Aviv
+    \item Active member of \textcolor{linkcolor}{\textbf{Hackappatoi}} , the top ethical hacking team at Sapienza University
+
+  \end{itemize}
+  
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.65\textwidth}
+  % Right column content
+  \section{Experiences}
+  
+  \experienceitem{Full Stack Software Engineer}{Tiuke}{Oct 2019 - Present}{Rome, Italy}{
+    \item Developed web and mobile applications for the Italian Ministry of Agriculture
+    \item Led development teams on multiple web applications, managing task assignments and coordinating colleagues' work
+    \item Optimized legacy applications into responsive web applications
+    \item Created internal automation tools for pre-configured layers with API services
+    \item Developed backend system for automatic documentation generation
+    \item Implemented LLM applications with specialized agents for data extraction
+    \item Improved geospatial segmentation models on satellite imagery
+    \item Created batch scripts for processing large volumes of geospatial data
+  }
+  
+  % Right column content
+  \section{Projects}
+    
+  \projectitem{Howtfits - Virtual Fitting Room}{In Progress}{AI-powered virtual fitting room for trying clothes virtually before purchasing}{https://howtfits.com}{null}
+    \item Developing an innovative AI solution that provides realistic clothing previews on user images, enhancing online shopping experience
+    \item Creating technology for accurate size recommendations to reduce returns and increase customer satisfaction
+  \end{itemize}
+    
+  \vspace{0.5cm}
+    
+  \projectitem{Card Scanner}{Completed}{AI-powered Pokemon card recognition system with client-side processing}{https://1vcian.github.io/Pokemon-TCGP-Card-Scanner/}{https://github.com/1vcian/Pokemon-TCGP-Card-Scanner}
+    \item Built a lightweight (<10MB) client-side card identification system that works with all new cards without requiring retraining
+    \item Successfully integrated into TCG Pocket Collection Tracker, the world's most popular Pokemon TCG tracker, significantly enhancing user experience
+  \end{itemize}
+    
+  \vspace{0.5cm}
+  
+  \projectitem{SmartHouse}{Completed}{Complete home automation system built with Arduino MEGA2560}{null}{https://github.com/LNPacio/ProgettoOS}
+    \item Engineered a comprehensive home automation solution with PWM control for lighting, ADC inputs for sensors, and a custom shell interface
+    \item Implemented advanced features including SSH connectivity for mobile access, device naming system, and channel management for 8 PWM outputs and 8 ADC inputs
+  \end{itemize}
+  
+  \vspace{0.5cm}
+    
+  \projectitem{Common Cast}{Completed}{Web app to find common actors between movies/TV shows}{https://1vcian.github.io/Common-Cast/}{https://github.com/1vcian/Common-Cast}
+    \item Created a practical solution for quickly identifying where you've seen actors before, solving a common viewer frustration
+    \item Implemented comprehensive actor information display with filmography details, enhancing user research capabilities
+  \end{itemize}
+
+  \vspace{0.5cm}
+
+  \projectitem{Openlayers GIS Applications}{Completed}{Enterprise-level geospatial web applications}{null}{null}
+    \item Developed full-stack solutions for the Italian Ministry of Agriculture that process massive geographic datasets while maintaining high performance
+    \item Implemented advanced features including LLM-powered data extraction and SAM-based segmentation models for agricultural applications
+  \end{itemize}
+
+  \vspace{0.5cm}
+
+  \projectitem{UniverCity}{Completed}{Award-winning collaborative platform for university students}{null}{https://github.com/davidedc97/UniverCity}
+    \item Created an intelligent note-sharing system with advanced indexing algorithms, winning the Google Workshop competition
+    \item Presented the project at Google's offices in Tel Aviv, receiving recognition for innovation and practical application
+  \end{itemize}
+
+
+\end{minipage}
+
+\vspace{0.1cm}
+\begin{center}
+  \small\textit{To view my digital business card, open your terminal and type: \texttt{npx 1vcian} ✨}
+\end{center}
+
+\end{document}
