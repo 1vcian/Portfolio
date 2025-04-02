@@ -86,3 +86,9 @@ npm start
 yarn build
 yarn start
 ```
+
+## 🔧 Requirements
+
+- Node.js >=22.x
+
+Created with ❤️ by Lucian Medrihan
