@@ -97,7 +97,7 @@ export default function Home() {
         <title>{meta.title}</title>
         <meta name="robots" content="follow, index" />
         <meta content={meta.description} name="description" />
-        <link rel="icon" href="/favico.svg" type="image/svg+xml" />
+        <link rel="icon" href="./favico.svg" type="image/svg+xml" />
 
         <meta property="og:type" content={meta.type} />
         <meta property="og:site_name" content="Manu Arora" />

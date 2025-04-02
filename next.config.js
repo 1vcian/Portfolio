@@ -6,14 +6,11 @@ const nextConfig = {
     unoptimized: true,
   },
   output: 'export',
-  basePath: '',
-  assetPrefix: '',
+  basePath: '/Portfolio',
+  assetPrefix: '/Portfolio/',
 };
 
-// Only add basePath and assetPrefix for production builds (GitHub Pages deployment)
-if (process.env.NODE_ENV === 'production') {
-  nextConfig.basePath = '/Portfolio';
-  nextConfig.assetPrefix = '/Portfolio/';
-}
+// Always use basePath and assetPrefix to ensure all resources are properly referenced
+// This ensures images and files in public folder are correctly accessed
 
 module.exports = nextConfig;

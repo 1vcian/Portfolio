@@ -50,7 +50,7 @@ export default function SomethingIveBuilt() {
                 <span className="text-AAsecondary text-xl">Work in progress..</span>
               </div>
 
-              <Img src={"/howtfits.png"} alt={"Project Screen shot"} className={`w-full rounded h-full `} />
+              <Img src={"./howtfits.png"} alt={"Project Screen shot"} className={`w-full rounded h-full `} />
             </div>
           </div>
 
@@ -61,7 +61,7 @@ export default function SomethingIveBuilt() {
               <div className="relative w-full h-full">
                 <div className="absolute w-full h-full bg-AAsecondary opacity-10 z-10"></div>
                 <div className="absolute w-full h-full bg-AAprimary opacity-80 z-10"></div>
-                <Img src={"/howtfits.png"} alt={"Project Screen shot"} className={`w-full h-full `} />
+                <Img src={"./howtfits.png"} alt={"Project Screen shot"} className={`w-full h-full `} />
               </div>
             </div>
             <div className="absolute w-full   rounded  ml-4 mt-2  text-end pr-8">
@@ -125,7 +125,7 @@ export default function SomethingIveBuilt() {
                 <span className="text-AAsecondary text-xl">Completed</span>
               </div>
 
-              <Img src={"/cardscanner.png"} alt={"Project Screen shot"} className={`w-full rounded h-full `} />
+              <Img src={"./cardscanner.png"} alt={"Project Screen shot"} className={`w-full rounded h-full `} />
             </div>
           </div>
 
@@ -136,7 +136,7 @@ export default function SomethingIveBuilt() {
               <div className="relative w-full h-full">
                 <div className="absolute w-full h-full bg-AAsecondary opacity-10 z-10"></div>
                 <div className="absolute w-full h-full bg-AAprimary opacity-80 z-10"></div>
-                <Img src={"/cardscanner.png"} alt={"Project Screen shot"} className={`w-full h-full `} />
+                <Img src={"./cardscanner.png"} alt={"Project Screen shot"} className={`w-full h-full `} />
               </div>
             </div>
             <div className="absolute w-full   rounded  ml-4 mt-2  text-end pr-8">
@@ -205,7 +205,7 @@ export default function SomethingIveBuilt() {
                 <span className="text-AAsecondary text-xl">Completed</span>
               </div>
 
-              <Img src={"/cast.png"} alt={"Project Screen shot"} className={`w-full rounded h-full `} />
+              <Img src={"./cast.png"} alt={"Project Screen shot"} className={`w-full rounded h-full `} />
             </div>
           </div>
 
@@ -216,7 +216,7 @@ export default function SomethingIveBuilt() {
               <div className="relative w-full h-full">
                 <div className="absolute w-full h-full bg-AAsecondary opacity-10 z-10"></div>
                 <div className="absolute w-full h-full bg-AAprimary opacity-80 z-10"></div>
-                <Img src={"/cast.png"} alt={"Project Screen shot"} className={`w-full h-full `} />
+                <Img src={"./cast.png"} alt={"Project Screen shot"} className={`w-full h-full `} />
               </div>
             </div>
             <div className="absolute w-full   rounded  ml-4 mt-2  text-end pr-8">
@@ -283,7 +283,7 @@ export default function SomethingIveBuilt() {
                 <span className="text-AAsecondary text-xl">Completed</span>
               </div>
 
-              <Img src={"/geo.png"} alt={"Project Screen shot"} className={`w-full rounded h-full `} />
+              <Img src={"./geo.png"} alt={"Project Screen shot"} className={`w-full rounded h-full `} />
             </div>
           </div>
 
@@ -294,7 +294,7 @@ export default function SomethingIveBuilt() {
               <div className="relative w-full h-full">
                 <div className="absolute w-full h-full bg-AAsecondary opacity-10 z-10"></div>
                 <div className="absolute w-full h-full bg-AAprimary opacity-80 z-10"></div>
-                <Img src={"/geo.png"} alt={"Project Screen shot"} className={`w-full h-full `} />
+                <Img src={"./geo.png"} alt={"Project Screen shot"} className={`w-full h-full `} />
               </div>
             </div>
             <div className="absolute w-full   rounded  ml-4 mt-2  text-end pr-8">
@@ -362,7 +362,7 @@ export default function SomethingIveBuilt() {
                 <span className="text-AAsecondary text-xl">Completed</span>
               </div>
 
-              <Img src={"/univercity.png"} alt={"UniverCity Project Screenshot"} className={`w-full rounded h-full `} />
+              <Img src={"./univercity.png"} alt={"UniverCity Project Screenshot"} className={`w-full rounded h-full `} />
             </div>
           </div>
 
@@ -373,7 +373,7 @@ export default function SomethingIveBuilt() {
               <div className="relative w-full h-full">
                 <div className="absolute w-full h-full bg-AAsecondary opacity-10 z-10"></div>
                 <div className="absolute w-full h-full bg-AAprimary opacity-80 z-10"></div>
-                <Img src={"/univercity.png"} alt={"UniverCity Project Screenshot"} className={`w-full h-full `} />
+                <Img src={"./univercity.png"} alt={"UniverCity Project Screenshot"} className={`w-full h-full `} />
               </div>
             </div>
             <div className="absolute w-full   rounded  ml-4 mt-2  text-end pr-8">
@@ -440,7 +440,7 @@ export default function SomethingIveBuilt() {
                 <span className="text-AAsecondary text-xl">Completed</span>
               </div>
 
-              <Img src={"/smarthouse.png"} alt={"Smart House Project Screenshot"} className={`w-full rounded h-full `} />
+              <Img src={"./smarthouse.png"} alt={"Smart House Project Screenshot"} className={`w-full rounded h-full `} />
             </div>
           </div>
 
@@ -451,7 +451,7 @@ export default function SomethingIveBuilt() {
               <div className="relative w-full h-full">
                 <div className="absolute w-full h-full bg-AAsecondary opacity-10 z-10"></div>
                 <div className="absolute w-full h-full bg-AAprimary opacity-80 z-10"></div>
-                <Img src={"/smarthouse.png"} alt={"Smart House Project Screenshot"} className={`w-full h-full `} />
+                <Img src={"./smarthouse.png"} alt={"Smart House Project Screenshot"} className={`w-full h-full `} />
               </div>
             </div>
             <div className="absolute w-full   rounded  ml-4 mt-2  text-end pr-8">
@@ -518,7 +518,7 @@ export default function SomethingIveBuilt() {
                 <span className="text-AAsecondary text-xl">Active</span>
               </div>
 
-              <Img src={"/hackappatoi.png"} alt={"Hackappatoi Team Screenshot"} className={`w-full rounded h-full `} />
+              <Img src={"./hackappatoi.png"} alt={"Hackappatoi Team Screenshot"} className={`w-full rounded h-full `} />
             </div>
           </div>
 
@@ -529,7 +529,7 @@ export default function SomethingIveBuilt() {
               <div className="relative w-full h-full">
                 <div className="absolute w-full h-full bg-AAsecondary opacity-10 z-10"></div>
                 <div className="absolute w-full h-full bg-AAprimary opacity-80 z-10"></div>
-                <Img src={"/hackappatoi.png"} alt={"Hackappatoi Team Screenshot"} className={`w-full h-full `} />
+                <Img src={"./hackappatoi.png"} alt={"Hackappatoi Team Screenshot"} className={`w-full h-full `} />
               </div>
             </div>
             <div className="absolute w-full   rounded  ml-4 mt-2  text-end pr-8">
