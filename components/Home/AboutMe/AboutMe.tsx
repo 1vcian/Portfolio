@@ -48,7 +48,7 @@ const AboutMe = forwardRef<HTMLDivElement>((props, ref) => {
                 which I later presented with my colleagues at <span className="text-AAsecondary">Google Tel Aviv</span>. I was also
                 a proud member of <a href="https://hackappatoi.github.io/" target="_blank" rel="noopener noreferrer" className="text-AAError hover:underline">Hackappatoi</a>, the top ethical hacking team at <span className="text-AAsecondary">Sapienza
                 University</span>, where I specialized in forensics, web security, coding challenges and various other categories to
-                broaden my expertise. Additionally, I have developed several open-source personal projects, some of which are
+                broaden my expertise. As a hobby, I am also an active <span className="text-AAsecondary">Bug Bounty Hunter</span>. Recently, on the <span className="text-AAsecondary">Cyberdart.eu</span> platform, I discovered 2 critical <span className="text-AAError">RCE vulnerabilities (CVSS 10.0)</span> on a major Italian internet distributor, earning approximately <span className="text-AAsecondary">$5,000</span> in bounties, along with several other low-severity findings. Additionally, I have developed several open-source personal projects, some of which are
                 available on my <span className="text-AAsecondary">GitHub</span> profile.
               </span>
             </div>
@@ -111,7 +111,7 @@ const AboutMe = forwardRef<HTMLDivElement>((props, ref) => {
             <div className="absolute w-5/6 h-5/6  rounded overflow-hidden">
               <div className="absolute w-full h-full group-hover:opacity-0 bg-AAsecondary opacity-10 duration-300 rounded overflow-hidden"></div>
               <Img
-                src={"./img/Portfolio-portrait.jpg"}
+                src={"/Portfolio/img/Portfolio-portrait.jpg"}
                 className={"object-contain rounded-lg"}
                 alt="My Image Not Found"
               />
@@ -122,7 +122,7 @@ const AboutMe = forwardRef<HTMLDivElement>((props, ref) => {
             <div className="absolute w-48 h-full  rounded  translate-x-5 translate-y-5 border-2 border-AAsecondary"></div>
             <div className="absolute w-48 h-full rounded overflow-hidden">
               <Img
-                src={"./img/Portfolio-portrait.jpg"}
+                src={"/Portfolio/img/Portfolio-portrait.jpg"}
                 className={"object-contain rounded-lg"}
                 alt="My Image Not Found"
               />

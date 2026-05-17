@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "../../../node_modules/framer-motion/dist/framer-motion";
 import ArrowIcon from "../../Icons/ArrowIcon";
 import Tiuke from "./Descriptions/Tiuke";
+import Prelcart from "./Descriptions/Prelcart";
 
 export default function WhereIHaveWorked() {
   const barRef = React.useRef<HTMLDivElement>(null);
@@ -9,12 +10,13 @@ export default function WhereIHaveWorked() {
   // ? INFORMATIONAL the default value of barRef's class should be at the beginning translate-y-[0px]
   const GetDescription = () => {
     switch (DescriptionJob) {
+      case "Prelcart":
+        return <Prelcart />;
       case "Tiuke":
         return <Tiuke />;
-
     }
   };
-  const [DescriptionJob, setDescriptionJob] = React.useState("Vision");
+  const [DescriptionJob, setDescriptionJob] = React.useState("Prelcart");
   return (
     <div data-aos="fade-up" className="flex flex-col items-center justify-center py-24 space-y-12 bg-AAprimary">
       {/* // ? Title "Where I've Worked" */}
@@ -47,7 +49,8 @@ const CompaniesBar = props => {
   const [barPosition, setBarPosition] = React.useState<Number>(-8); // Green bar position by the default it's -20px
   const [barAbovePosition, setBarAbovePosition] = React.useState<Number>(0);
   const [companyNameBackgroundColorGreen, setCompanyNameBackgroundColorGreen] = React.useState<boolean[]>([
-    true
+    true,
+    false,
   ]);
   const CompanyButton = props => {
     return (
@@ -96,14 +99,22 @@ const CompaniesBar = props => {
         <div className="flex flex-row md:flex-col">
           <CompanyButton
             ButtonOrderOfcompanyNameBackgroundColorGreen={0}
-            CompanyName="Tiuke"
+            CompanyName="PR.EL.CART."
             BarPosition={-10}
             BarAvobePosition={1}
-            DescriptionJob="Tiuke"
-            CompanyNameBackgroundColorGreen={[true]}
+            DescriptionJob="Prelcart"
+            CompanyNameBackgroundColorGreen={[true, false]}
             setDescriptionJob={props.setDescriptionJob}
           />
-       
+          <CompanyButton
+            ButtonOrderOfcompanyNameBackgroundColorGreen={1}
+            CompanyName="Tiuke"
+            BarPosition={34}
+            BarAvobePosition={129}
+            DescriptionJob="Tiuke"
+            CompanyNameBackgroundColorGreen={[false, true]}
+            setDescriptionJob={props.setDescriptionJob}
+          />
         </div>
         <div className="block md:hidden h-0.5 rounded bg-gray-500">
           <motion.div animate={{ x: barAbovePosition }} className="w-[128px] h-0.5 rounded bg-AAsecondary"></motion.div>
