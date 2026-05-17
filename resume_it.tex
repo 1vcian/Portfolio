@@ -1,4 +1,4 @@
-\documentclass[a4paper,10pt]{article}
+\documentclass[a4paper,8pt]{extarticle}
 
 % Packages
 \usepackage[T1]{fontenc}
@@ -139,10 +139,10 @@
   \end{tabular}
 
   \section{Riconoscimenti \& Attività}
-  \begin{itemize}[leftmargin=1em]
-    \item \textcolor{linkcolor}{\textbf{Vincitore del Google Workshop}} per il progetto UniverCity, presentato presso Google Tel Aviv
-    \item Membro attivo di \textcolor{linkcolor}{\textbf{Hackappatoi}} , il principale team di ethical hacking dell'Università Sapienza
-
+  \begin{itemize}[leftmargin=1.5em]
+    \item \textcolor{linkcolor}{\textbf{Bug Bounty Hunter}}: Trovato 2 RCE critiche (CVSS 10.0) su major ISP italiano via Cyberdart.eu (~\$5k bounty)
+    \item \textcolor{linkcolor}{\textbf{Vincitore Google Workshop}} per UniverCity, presentato presso Google Tel Aviv
+    \item Membro di \textcolor{linkcolor}{\textbf{Hackappatoi}}, il team di ethical hacking di Sapienza
   \end{itemize}
   
 \end{minipage}
@@ -151,7 +151,16 @@
   % Right column content
   \section{Esperienze}
   
-  \experienceitem{Ingegnere Software Full Stack}{Tiuke}{Ott 2019 - Presente}{Roma, Italia}{
+  \experienceitem{Ingegnere Software Full Stack}{PR.EL.CART. EUROPE ENGINEERING S.R.L.}{Giu 2025 - Presente}{Roma, Italia}{
+    \item Sviluppo in collaborazione con il Ministero dell'Agricoltura italiano per soluzioni software avanzate
+    \item Gestione e mentoring di un team di 3 sviluppatori junior, guidandoli nell'architettura software
+    \item Sviluppo indipendente dell'applicazione ufficiale AGEA Vinitaly 2026 utilizzando la tecnologia PMTiles
+    \item Creazione di una pipeline AI su Google Cloud Vertex AI per generare foto satellitari a 1m da foto Sentinel a 10m, riducendo i costi da 4/5M€ a 500€/mese
+  }
+  
+  \vspace{0.25cm}
+  
+  \experienceitem{Ingegnere Software Full Stack}{Tiuke S.R.L.}{Ott 2019 - Giu 2025}{Roma, Italia}{
     \item Sviluppo di applicazioni web e mobile per il Ministero dell'Agricoltura italiano
     \item Guidato team di sviluppo su diverse applicazioni web, gestendo l'assegnazione dei compiti e coordinando il lavoro dei colleghi
     \item Ottimizzato applicazioni legacy in applicazioni web responsive
@@ -163,42 +172,46 @@
   }
   
   % Right column content
-  \section{Progetti}
-    
-  \projectitem{Howtfits - Camerino Virtuale}{In Corso}{Camerino virtuale basato su AI per provare vestiti virtualmente}{https://howtfits.com}{null}
-    \item Sviluppo di una soluzione AI innovativa che fornisce anteprime realistiche di abbigliamento su immagini degli utenti, migliorando lo shopping online
-    \item Creazione di tecnologia per raccomandazioni accurate sulle taglie per ridurre i resi e aumentare la soddisfazione dei clienti
+  \section{Progetti \hfill \normalfont\small\href{https://github.com/1vcian}{Vedi altri su GitHub}}
+  \projectitem{Pipeline AI Sentinel}{Completato}{Upscaling di immagini satellitari tramite AI}{null}{null}
+    \item Progettato una pipeline su Google Cloud Vertex AI per ottenere foto a risoluzione 1m da foto Sentinel-2 a 10m
+    \item Ridotto i costi operativi da ~4 milioni di euro (per 3 anni) a ~500€ al mese, permettendo aggiornamenti mensili
   \end{itemize}
     
-  \vspace{0.5cm}
-    
+  \vspace{0.25cm}
+
   \projectitem{Card Scanner}{Completato}{Sistema di riconoscimento carte Pokémon tramite AI con elaborazione client}{https://1vcian.github.io/Pokemon-TCGP-Card-Scanner/}{https://github.com/1vcian/Pokemon-TCGP-Card-Scanner}
     \item Costruito un sistema leggero (<10MB) di identificazione carte lato client che funziona con tutte le nuove carte senza richiedere riaddestramento
     \item Integrato con successo in TCG Pocket Collection Tracker, il tracker Pokémon TCG più popolare al mondo, migliorando significativamente l'esperienza utente
   \end{itemize}
     
-  \vspace{0.5cm}
-  
-  \projectitem{SmartHouse}{Completato}{Sistema completo di domotica costruito con Arduino MEGA2560}{null}{https://github.com/LNPacio/ProgettoOS}
-    \item Progettato una soluzione completa di domotica con controllo PWM per l'illuminazione, ingressi ADC per sensori e un'interfaccia shell personalizzata
-    \item Implementato funzionalità avanzate tra cui connettività SSH per accesso mobile, sistema di denominazione dispositivi e gestione canali per 8 uscite PWM e 8 ingressi ADC
-  \end{itemize}
-  
-  \vspace{0.5cm}
+  \vspace{0.25cm}
     
-  \projectitem{Common Cast}{Completato}{App web per trovare attori comuni tra film/serie TV}{https://1vcian.github.io/Common-Cast/}{https://github.com/1vcian/Common-Cast}
-    \item Creato una soluzione pratica per identificare rapidamente dove hai visto gli attori prima, risolvendo una frustrazione comune degli spettatori
-    \item Implementato visualizzazione completa delle informazioni sugli attori con dettagli sulla filmografia, migliorando le capacità di ricerca degli utenti
+  \projectitem{AGEA Vinitaly 2026}{Completato}{Applicazione web ufficiale per Vinitaly 2026}{https://agea-vinitaly-2026.sian.it/}{null}
+    \item Sviluppato l'applicazione utilizzando la tecnologia PMTiles per visualizzare in modo efficiente gli appezzamenti agricoli di tutta Italia
+    \item Gestione di enormi dataset geospaziali garantendo alte prestazioni di rendering
   \end{itemize}
+    
+  \vspace{0.25cm}
 
-  \vspace{0.5cm}
+  \projectitem{Wolf \& Mafia}{Completato}{Gioco 100\% offline di Lupus in Tabula per Android e iOS}{https://wolfmafia.app/}{null}
+    \item Sviluppato da zero un gioco completo di deduzione sociale con 36 ruoli unici e un sistema di narratore totalmente guidato
+    \item Implementato multiplayer locale basato su codice QR, permettendo agli utenti di giocare senza connessione internet
+  \end{itemize}
+    
+  \vspace{0.25cm}
 
+  \projectitem{Strumenti per Gaming Community}{In Corso}{App ForgeMaster \& Eatventure Seed Predictor}{https://1vcian.me/fm}{https://github.com/1vcian/fm}
+    \item Sviluppato strumenti di reverse engineering molto amati, tra cui un'app auto-aggiornante per ForgeMaster e un accurato predittore di drop RNG per Eatventure
+  \end{itemize}
+    
+  \vspace{0.25cm}
   \projectitem{Applicazioni GIS Openlayers}{Completato}{Applicazioni web geospaziali a livello enterprise}{null}{null}
     \item Sviluppato soluzioni full-stack per il Ministero dell'Agricoltura italiano che elaborano enormi dataset geografici mantenendo alte prestazioni
     \item Implementato funzionalità avanzate tra cui estrazione dati basata su LLM e modelli di segmentazione SAM per applicazioni agricole
   \end{itemize}
 
-  \vspace{0.5cm}
+  \vspace{0.25cm}
 
   \projectitem{UniverCity}{Completato}{Piattaforma collaborativa premiata per studenti universitari}{null}{https://github.com/davidedc97/UniverCity}
     \item Creato un sistema intelligente di condivisione appunti con algoritmi di indicizzazione avanzati, vincendo la competizione Google Workshop
