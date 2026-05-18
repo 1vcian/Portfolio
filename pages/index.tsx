@@ -4,7 +4,6 @@ import MyName from "../components/Home/MyName/MyName";
 import { useContext, useEffect, useState, useRef } from "react";
 import SocialMediaArround from "../components/Home/SocialMediaArround/SocialMediaArround";
 import AboutMe from "../components/Home/AboutMe/AboutMe";
-import ThisCantBeReached from "../components/Home/ThisSiteCantBeReached/ThisCantBeReached";
 import WhereIHaveWorked from "../components/Home/WhereIHaveWorked/WhereIHaveWorked";
 import SomethingIveBuilt from "../components/Home/SomethingIveBuilt/SomethingIveBuilt";
 import GetInTouch from "../components/Home/GetInTouch/GetInTouch";
@@ -16,8 +15,8 @@ import Head from "next/head";
 import ScreenSizeDetector from "../components/CustomComponents/ScreenSizeDetector";
 import Maintenance from "../components/Home/Maintenance/Maintenance";
 export default function Home() {
-  const [ShowElement, setShowElement] = useState(false);
-  const [ShowThisCantBeReached, setShowThisCantBeReached] = useState(true);
+  const [ShowElement, setShowElement] = useState(true);
+  const [ShowThisCantBeReached, setShowThisCantBeReached] = useState(false);
   const [ShowMe, setShowMe] = useState(false);
   // context Variable to clearInterval
   const context = useContext(AppContext);
@@ -63,19 +62,11 @@ export default function Home() {
       document.removeEventListener("keydown", context.sharedState.typing.keyboardEvent);
     }
     setTimeout(() => {
-      setShowElement(true);
-    }, 4500);
-
-    setTimeout(() => {
-      setShowThisCantBeReached(false);
-    }, 5400);
-    // ? INFORMATIONAL next function will show the component after changing the state of ShowMe
-    setTimeout(() => {
       setShowElement(false);
       setShowMe(true);
       context.sharedState.finishedLoading = true;
-      context.setSharedState(context.sharedState);
-    }, 10400);
+      context.setSharedState({ ...context.sharedState, finishedLoading: true });
+    }, 1000);
   }, [context, context.sharedState]);
 
   useEffect(() => {

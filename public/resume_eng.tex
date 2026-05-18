@@ -102,7 +102,7 @@
   \begin{center}
     {\fontsize{21}{20}\selectfont\textbf{\textcolor{primary}{Lucian Medrihan}}}\\
     \vspace{0.2cm}
-    {\large Senior Full Stack Engineer}
+    {\large Software Engineer}
   \end{center}
   \section{About Me}
   Passionate Software Engineer with Full Stack development experience, which began by exploring Ethical Hacking at age 12.
@@ -121,16 +121,15 @@
   \end{tabular}
   
   \section{Skills}
-  \textbf{Technical Skills:} Proficient in \textcolor{linkcolor}{\textbf{Python}}, JavaScript, and Node.js, with extensive experience in \textcolor{linkcolor}{\textbf{React.js}}, \textcolor{linkcolor}{\textbf{Angular.js}}, Flask, and FastAPI. Expertise in \textcolor{linkcolor}{\textbf{full-stack development}} using modern web technologies, complemented by strong skills in \textcolor{linkcolor}{\textbf{Docker}}, \textcolor{linkcolor}{\textbf{AWS}}, Cloudfront, and cloud solutions.\\
+  \textbf{Technical Skills:} Proficient in \textcolor{linkcolor}{\textbf{Python}}, JavaScript, and Node.js, with extensive experience in \textcolor{linkcolor}{\textbf{React.js}}, \textcolor{linkcolor}{\textbf{Angular.js}}, Flask, and FastAPI. Expertise in \textcolor{linkcolor}{\textbf{full-stack development}} using modern web technologies, complemented by strong skills in \textcolor{linkcolor}{\textbf{Docker}}, \textcolor{linkcolor}{\textbf{AWS}}, and cloud solutions.\\
   
-  \textbf{Additional Skills:} \textcolor{linkcolor}{\textbf{GIS}}, \textcolor{linkcolor}{\textbf{Machine Learning}}, \textcolor{linkcolor}{\textbf{LLMs}}, Image Processing, Tailwind CSS, Bootstrap, Openlayers, Linux commands, \textcolor{linkcolor}{\textbf{Cybersecurity}}, Geopandas, JQuery, network programming.\\
+  \textbf{Additional Skills:} \textcolor{linkcolor}{\textbf{GIS}}, \textcolor{linkcolor}{\textbf{Machine Learning}}, \textcolor{linkcolor}{\textbf{LLMs}}, AI-assisted development, Image Processing, Tailwind CSS, Bootstrap, Openlayers, Linux commands, \textcolor{linkcolor}{\textbf{Cybersecurity}}, Geopandas, JQuery, network programming.\\
   
   \textbf{Soft Skills:} Proven ability to solve \textcolor{linkcolor}{\textbf{complex problems}}, manage projects effectively, and \textcolor{linkcolor}{\textbf{lead teams}}. Strong time management, critical thinking, and attention to detail.
   
   \section{Education}
   \timelinedot~\textbf{Computer and Automation Engineering}\\
-  \textit{Sapienza University of Rome}\\
-  \textit{Graduated: 03/2025}\\
+  \textit{Sapienza University of Rome}
   
 
   \section{Languages}
@@ -144,7 +143,7 @@
   \begin{itemize}[leftmargin=1.5em]
     \item \textcolor{linkcolor}{\textbf{Bug Bounty Hunter}}: Found 2 critical RCEs (CVSS 10.0) on major Italian ISP via Cyberdart.eu (~\$5k bounties)
     \item \textcolor{linkcolor}{\textbf{Google Workshop Winner}} for UniverCity, presented at Google Tel Aviv
-    \item Member of \textcolor{linkcolor}{\textbf{Hackappatoi}}, Sapienza's top ethical hacking team
+    \item Co-Founder of \textcolor{linkcolor}{\textbf{Hackappatoi}}, Sapienza's top ethical hacking / CTF team
   \end{itemize}
   
 \end{minipage}
@@ -156,64 +155,61 @@
   \experienceitem{Full Stack Software Engineer}{PR.EL.CART. EUROPE ENGINEERING S.R.L.}{Jun 2025 - Present}{Rome, Italy}{
     \item Developing advanced software solutions in collaboration with the Italian Ministry of Agriculture
     \item Managing and mentoring a team of 3 junior developers, guiding them in software architecture
-    \item Independently developed the official AGEA Vinitaly 2026 application using PMTiles technology
+    \item Independently developed the official \href{https://agea-vinitaly-2026.sian.it/}{AGEA Vinitaly 2026} application using PMTiles technology
     \item Engineered an AI pipeline on Google Cloud Vertex AI to generate 1m satellite photos from 10m Sentinel imagery, reducing costs from ~€4/5M to ~€500/month
   }
   
   \vspace{0.25cm}
   
   \experienceitem{Full Stack Software Engineer}{Tiuke S.R.L.}{Oct 2019 - Jun 2025}{Rome, Italy}{
-    \item Developed web and mobile applications for the Italian Ministry of Agriculture
-    \item Led development teams on multiple web applications, managing task assignments and coordinating colleagues' work
-    \item Optimized legacy applications into responsive web applications
-    \item Created internal automation tools for pre-configured layers with API services
-    \item Developed backend system for automatic documentation generation
-    \item Implemented LLM applications with specialized agents for data extraction
-    \item Improved geospatial segmentation models on satellite imagery
-    \item Created batch scripts for processing large volumes of geospatial data
+    \item Developed 5+ web and mobile applications for the Italian Ministry of Agriculture, serving over 10,000 active users
+    \item Collaborated in a high-performing 5-member development team with shared decision-making, optimizing releases and task coordination
+    \item Refactored legacy monolithic applications into responsive web apps, reducing page load times by 40\%
+    \item Created automation tools for integrating mapping layers, accelerating development time by 3x
+    \item Developed backend systems for automated report generation, saving ~15 hours of manual work per week
+    \item Implemented specialized LLM agents for agricultural data extraction, achieving 95\% accuracy
+    \item Enhanced training of geospatial segmentation models, increasing parcel detection precision by 20\%
+    \item Wrote batch scripts to process terabytes of data, reducing pipeline execution time by 50\%
   }
   
   % Right column content
   \section{Projects \hfill \normalfont\small\href{https://github.com/1vcian}{View more on GitHub}}
+ 
+  \projectitem{Card Scanner [GitHub: $\star$ 58]}{Completed}{AI-powered Pokemon card recognition system with client-side processing}{https://1vcian.github.io/Pokemon-TCGP-Card-Scanner/}{https://github.com/1vcian/Pokemon-TCGP-Card-Scanner}
+    \item Built a lightweight (<10MB) client-side card identification system that works with all new cards without requiring retraining
+    \item Successfully integrated as the core MVP scanner into the open-source \href{https://github.com/marcelpanse/tcg-pocket-collection-tracker}{TCG Pocket Collection Tracker} ($\star$ 150+), significantly enhancing the user experience
+  \end{itemize}
     
-  \projectitem{Sentinel AI Pipeline}{Completed}{Satellite image upscaling using AI}{null}{null}
-    \item Designed a pipeline on Google Cloud Vertex AI to obtain 1m resolution photos from 10m Sentinel-2 imagery
-    \item Reduced operational costs from ~€4 million (over 3 years) to ~€500 per month, enabling monthly updates
+  \vspace{0.25cm}
+ 
+  \projectitem{EGNSS Capacitor}{Completed}{Universal GNSS Capacitor plugin with OSNMA support}{https://1vcian.me/egnss-capacitor/}{https://github.com/1vcian/egnss-capacitor}
+    \item Developed a cross-platform plugin to guarantee absolute geographic precision in Europe using Galileo's OSNMA and EGNOS
+    \item Exposed a unified API for Android, iOS, and Web to read highly accurate coordinates from internal GNSS and external Bluetooth antennas
   \end{itemize}
     
   \vspace{0.25cm}
 
-  \projectitem{Card Scanner}{Completed}{AI-powered Pokemon card recognition system with client-side processing}{https://1vcian.github.io/Pokemon-TCGP-Card-Scanner/}{https://github.com/1vcian/Pokemon-TCGP-Card-Scanner}
-    \item Built a lightweight (<10MB) client-side card identification system that works with all new cards without requiring retraining
-    \item Successfully integrated into TCG Pocket Collection Tracker, the world's most popular Pokemon TCG tracker, significantly enhancing user experience
-  \end{itemize}
-    
-  \vspace{0.25cm}
-    
-  \projectitem{AGEA Vinitaly 2026}{Completed}{Official web application for Vinitaly 2026}{https://agea-vinitaly-2026.sian.it/}{null}
-    \item Developed the application using PMTiles technology to efficiently visualize agricultural plots across all of Italy
-    \item Managed massive geospatial datasets ensuring high rendering performance
-  \end{itemize}
-    
-  \vspace{0.25cm}
 
   \projectitem{Wolf \& Mafia}{Completed}{100\% Offline Mafia \& Werewolf game for Android and iOS}{https://wolfmafia.app/}{null}
     \item Developed from scratch a complete offline social deduction game featuring 36 unique roles and a fully guided narrator system
-    \item Implemented QR-code based local multiplayer allowing users to join games instantly without an internet connection
+    \item Powered by a completely deterministic, seed-based game state generator that functions offline without any internet or servers
+    \item Implemented QR-code based local multiplayer allowing users to join games instantly
   \end{itemize}
     
   \vspace{0.25cm}
 
-  \projectitem{Game Ecosystem Tools}{In Progress}{ForgeMaster App \& Eatventure Seed Predictor}{https://1vcian.me/fm}{https://github.com/1vcian/fm}
-    \item Developed widely-used reverse engineering tools, including an auto-updating app for ForgeMaster and an accurate RNG drop predictor for Eatventure
+  \projectitem{Game Ecosystem Tools}{In Progress}{ForgeMaster App \& Eatventure Seed Predictor}{null}{null}
+    \item Developed an auto-updating companion app for ForgeMaster (\href{https://1vcian.me/fm}{\faGlobe} / \href{https://github.com/1vcian/fm}{\faGithub})
+    \item Created an accurate seed-based RNG drop predictor for Eatventure (\href{https://eatventure-loot-predictor.vercel.app/}{\faGlobe} / \href{https://github.com/1vcian/eatventure-vercel}{\faGithub})
   \end{itemize}
     
   \vspace{0.25cm}
-  \projectitem{Openlayers GIS Applications}{Completed}{Enterprise-level geospatial web applications}{null}{null}
-    \item Developed full-stack solutions for the Italian Ministry of Agriculture that process massive geographic datasets while maintaining high performance
-    \item Implemented advanced features including LLM-powered data extraction and SAM-based segmentation models for agricultural applications
-  \end{itemize}
 
+  \projectitem{Smart House}{Completed}{Arduino-based custom home automation system}{null}{https://github.com/LNPacio/ProgettoOS}
+    \item Developed a complete home automation system on Arduino MEGA2560 featuring SSH remote access
+    \item Implemented PWM control for lighting, ADC sensor inputs, and a custom interactive shell interface
+  \end{itemize}
+    
   \vspace{0.25cm}
 
   \projectitem{UniverCity}{Completed}{Award-winning collaborative platform for university students}{null}{https://github.com/davidedc97/UniverCity}
@@ -224,7 +220,7 @@
 
 \end{minipage}
 
-\vspace{0.1cm}
+\vfill
 \begin{center}
   \small\textit{To view my digital business card, open your terminal and type: \texttt{npx 1vcian} ✨}
 \end{center}

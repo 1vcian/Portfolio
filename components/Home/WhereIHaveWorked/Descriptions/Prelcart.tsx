@@ -13,7 +13,7 @@ export default function Prelcart() {
       keywords: ["Managing and mentoring", "3 junior developers"],
     },
     {
-      text: "Independently developed the official AGEA Vinitaly 2026 application using PMTiles technology to visualize plots of land across all of Italy.",
+      text: "Independently developed the official <a href='https://agea-vinitaly-2026.sian.it/' target='_blank' class='text-AAsecondary hover:underline'>AGEA Vinitaly 2026</a> application using PMTiles technology to visualize plots of land across all of Italy.",
       keywords: ["AGEA Vinitaly 2026", "PMTiles technology", "visualize plots of land"],
     },
     {

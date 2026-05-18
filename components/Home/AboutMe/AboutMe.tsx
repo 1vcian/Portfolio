@@ -5,7 +5,7 @@ const AboutMe = forwardRef<HTMLDivElement>((props, ref) => {
   const technologies = [
     ["Python", "Flask", "FastAPI", "Node.js", "Geopanda"],
     ["React.js", "angular.js", "JQuery", "Tailwind CSS", "Bootstrap", "Openlayers"],
-    ["AWS", "Docker", "Linux", "Cloudfront"],
+    ["AWS", "Docker", "Linux", "AI-assisted development"],
   ];
   return (
     <div id="aboutSection" data-aos="fade-up" className="snap-start flex flex-col  items-center py-20 bg-AAprimary">

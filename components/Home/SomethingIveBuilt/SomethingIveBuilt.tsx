@@ -95,10 +95,6 @@ export default function SomethingIveBuilt() {
           </div>
         </div>
 
-
-
-
-
         {/* // ? Project Pokemon */}
         <div data-aos="fade-up" className="relative md:grid md:grid-cols-12 w-full md:h-96">
           {/* Left image */}
@@ -177,8 +173,6 @@ export default function SomethingIveBuilt() {
           </div>
         </div>
 
-
-
         {/* // ? Project  vinitaly*/}
         <div data-aos="fade-up" className="relative md:grid md:grid-cols-12 w-full md:h-96">
           {/* Left image */}
@@ -251,6 +245,83 @@ export default function SomethingIveBuilt() {
             </div>
           </div>
         </div>
+
+        {/* // ? Project EGNSS Capacitor */}
+        <div data-aos="fade-up" className="relative md:grid md:grid-cols-12 w-full md:h-96">
+          {/* Left image */}
+          <div
+            className="hidden bg-AAprimary z-10  py-4 
+          absolute md:grid grid-cols-12 w-full h-full  content-center"
+          >
+            <div className="relative rounded w-full h-full col-span-7 ">
+              <a href="https://1vcian.me/egnss-capacitor/" target={"_blank"} rel="noreferrer">
+                <div
+                  className="absolute w-full h-full rounded bg-AAprimary 
+           transition-opacity opacity-50 hover:opacity-0 hover:cursor-pointer duration-300"
+                ></div>
+              </a>
+
+              <div className="absolute px-2 bg-AAprimary rounded  ml-4 mt-2 ">
+                <span className="text-AAsecondary text-xl">Recent Project</span>
+              </div>
+
+              <Img src={"/Portfolio/egnss.png"} alt={"EGNSS Capacitor Project"} className={`w-full h-full object-cover object-center rounded`} />
+            </div>
+          </div>
+
+          {/* right Content */}
+          <div className=" md:absolute py-4  md:grid md:grid-cols-12 w-full h-full  content-center ">
+            {/* background for text in mobile responsive */}
+            <div className="absolute w-full h-full bg-opacity-70 z-0">
+              <div className="relative w-full h-full">
+                <div className="absolute w-full h-full bg-AAsecondary opacity-10 z-10"></div>
+                <div className="absolute w-full h-full bg-AAprimary opacity-80 z-10"></div>
+                <Img src={"/Portfolio/egnss.png"} alt={"EGNSS Capacitor Project"} className={`w-full h-full object-cover object-center`} />
+              </div>
+            </div>
+            <div className="absolute w-full   rounded  ml-4 mt-2  text-end pr-8">
+              <div className="w-full"></div>
+              <span className="text-AAsecondary sm:text-lg bg-AAprimary px-2 py-1 rounded">Completed</span>
+            </div>
+            <div
+              className="px-8 pt-8 sm:pt-12 md:py-0 xl:col-span-6 xl:col-start-7 col-start-5 
+            col-span-8 flex flex-col items-start md:items-end sm:space-y-3 space-y-1"
+            >
+              <div className="flex flex-col space-y-1 md:items-end z-10">
+                <span className="text-AAsecondary text-base">Open Source Plugin</span>
+                <a href="https://1vcian.me/egnss-capacitor/" target={"_blank"} rel="noreferrer">
+                  <span className=" md:text-gray-200 text-AAsecondary font-bold text-xl hover:cursor-pointer">
+                    EGNSS Capacitor
+                  </span>
+                </a>
+              </div>
+              <div className="w-full md:bg-AAtertiary rounded-md py-6 md:p-6  z-10">
+                <p className="text-gray-300 md:text-gray-400 text-left md:text-right">
+                  Developed a universal <span className="text-AAsecondary">Capacitor plugin</span> designed to guarantee <span className="text-AAsecondary">absolute geographic precision in Europe</span>. By integrating Galileo's OSNMA and EGNOS support, it exposes a unified API to read highly accurate GNSS coordinates from both internal device sensors and <span className="text-AAsecondary">external Bluetooth antennas</span> across Android, iOS, and Web.
+                </p>
+              </div>
+              <ul
+                className="flex flex-wrap w-full text-gray-300 md:text-gray-400
+               text-sm font-Text2 md:justify-end"
+              >
+                <span className="pr-4 z-10">Capacitor</span>
+                <span className="pr-4 z-10">Bluetooth</span>
+                <span className="pr-4 z-10">GNSS</span>
+              </ul>
+              <div className="z-10 flex fle-row space-x-5 sm:pt-0 pt-2">
+                <GithubIcon link="https://github.com/1vcian/egnss-capacitor" />
+                <a href="https://1vcian.me/egnss-capacitor/" target={"_blank"} rel="noreferrer">
+                  <ExternalLink url={""} router={router} />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+
         {/* // ? Project wolf & mafia */}
         <div data-aos="fade-up" className="relative md:grid md:grid-cols-12 w-full md:h-96">
           {/* Left image */}
@@ -302,10 +373,10 @@ export default function SomethingIveBuilt() {
               </div>
               <div className="w-full md:bg-AAtertiary rounded-md py-6 md:p-6  z-10">
                 <p className="text-gray-300 md:text-gray-400 text-left md:text-right">
-                  A 100% offline <span className="text-AAsecondary">social deduction game</span> (Lupus in Tabula/Mafia) designed for Android and iOS. 
-                  Developed entirely from scratch, the app features <span className="text-AAsecondary">36 unique roles</span> and a fully guided narrator mode. 
-                  Players join locally by <span className="text-AAsecondary">scanning a QR code</span> without needing an internet connection. 
-                  It includes advanced mechanics like rollback, automated polling, and multilingual support for seamless group play anywhere.
+                  A 100% offline <span className="text-AAsecondary">social deduction game</span> (Lupus in Tabula/Mafia) designed for Android and iOS.
+                  Developed from scratch, the app runs <span className="text-AAsecondary">completely deterministically using seed-based generation</span>,
+                  allowing full offline functionality without any internet or servers. Players join locally by <span className="text-AAsecondary">scanning a QR code</span>,
+                  featuring a guided narrator mode, rollback mechanics, and automatic polling for seamless group play anywhere.
                 </p>
               </div>
               <ul
