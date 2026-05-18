@@ -52,28 +52,6 @@ const CompaniesBar = props => {
     true,
     false,
   ]);
-  const CompanyButton = props => {
-    return (
-      <button
-        onClick={() => {
-          setBarPosition(props.BarPosition);
-          setBarAbovePosition(props.BarAvobePosition);
-          props.setDescriptionJob(props.DescriptionJob);
-          setCompanyNameBackgroundColorGreen(props.CompanyNameBackgroundColorGreen);
-        }}
-        className={`flex-none sm:text-sm text-xs text-center md:text-left  hover:text-AAsecondary
-             hover:bg-ResumeButtonHover rounded  font-mono  
-             py-3 md:pl-6 md:px-4 md:w-44 w-32 duration-500
-             ${
-               companyNameBackgroundColorGreen[props.ButtonOrderOfcompanyNameBackgroundColorGreen]
-                 ? "bg-ResumeButtonHover text-AAsecondary"
-                 : "text-gray-500"
-             }`}
-      >
-        {props.CompanyName}
-      </button>
-    );
-  };
 
   return (
     <div
@@ -97,24 +75,42 @@ const CompaniesBar = props => {
       {/* // ? Companies name as buttons */}
       <div className="flex flex-col md:order-2 order-1 space-y-1 pl-8 md:pl-0 ">
         <div className="flex flex-row md:flex-col">
-          <CompanyButton
-            ButtonOrderOfcompanyNameBackgroundColorGreen={0}
-            CompanyName="PR.EL.CART."
-            BarPosition={-10}
-            BarAvobePosition={1}
-            DescriptionJob="Prelcart"
-            CompanyNameBackgroundColorGreen={[true, false]}
-            setDescriptionJob={props.setDescriptionJob}
-          />
-          <CompanyButton
-            ButtonOrderOfcompanyNameBackgroundColorGreen={1}
-            CompanyName="Tiuke"
-            BarPosition={34}
-            BarAvobePosition={129}
-            DescriptionJob="Tiuke"
-            CompanyNameBackgroundColorGreen={[false, true]}
-            setDescriptionJob={props.setDescriptionJob}
-          />
+          <button
+            onClick={() => {
+              setBarPosition(-10);
+              setBarAbovePosition(1);
+              props.setDescriptionJob("Prelcart");
+              setCompanyNameBackgroundColorGreen([true, false]);
+            }}
+            className={`flex-none sm:text-sm text-xs text-center md:text-left  hover:text-AAsecondary
+                 hover:bg-ResumeButtonHover rounded  font-mono  
+                 py-3 md:pl-6 md:px-4 md:w-44 w-32 duration-500
+                 ${
+                   companyNameBackgroundColorGreen[0]
+                     ? "bg-ResumeButtonHover text-AAsecondary"
+                     : "text-gray-500"
+                 }`}
+          >
+            PR.EL.CART.
+          </button>
+          <button
+            onClick={() => {
+              setBarPosition(34);
+              setBarAbovePosition(129);
+              props.setDescriptionJob("Tiuke");
+              setCompanyNameBackgroundColorGreen([false, true]);
+            }}
+            className={`flex-none sm:text-sm text-xs text-center md:text-left  hover:text-AAsecondary
+                 hover:bg-ResumeButtonHover rounded  font-mono  
+                 py-3 md:pl-6 md:px-4 md:w-44 w-32 duration-500
+                 ${
+                   companyNameBackgroundColorGreen[1]
+                     ? "bg-ResumeButtonHover text-AAsecondary"
+                     : "text-gray-500"
+                 }`}
+          >
+            Tiuke
+          </button>
         </div>
         <div className="block md:hidden h-0.5 rounded bg-gray-500">
           <motion.div animate={{ x: barAbovePosition }} className="w-[128px] h-0.5 rounded bg-AAsecondary"></motion.div>

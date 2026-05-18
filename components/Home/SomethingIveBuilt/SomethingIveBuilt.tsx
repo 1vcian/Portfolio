@@ -215,7 +215,6 @@ export default function SomethingIveBuilt() {
             col-span-8 flex flex-col items-start md:items-end sm:space-y-3 space-y-1"
             >
               <div className="flex flex-col space-y-1 md:items-end z-10">
-                <span className="text-AAsecondary text-base">Recent Project</span>
                 <a href="https://agea-vinitaly-2026.sian.it/" target={"_blank"} rel="noreferrer">
                   <span className=" md:text-gray-200 text-AAsecondary font-bold text-xl hover:cursor-pointer">
                     AGEA Vinitaly 2026 App
@@ -262,7 +261,7 @@ export default function SomethingIveBuilt() {
               </a>
 
               <div className="absolute px-2 bg-AAprimary rounded  ml-4 mt-2 ">
-                <span className="text-AAsecondary text-xl">Recent Project</span>
+                <span className="text-AAsecondary text-xl">Completed</span>
               </div>
 
               <Img src={"/Portfolio/egnss.png"} alt={"EGNSS Capacitor Project"} className={`w-full h-full object-cover object-center rounded`} />
@@ -318,9 +317,78 @@ export default function SomethingIveBuilt() {
           </div>
         </div>
 
+        {/* // ? Project Notex */}
+        <div data-aos="fade-up" className="relative md:grid md:grid-cols-12 w-full md:h-96">
+          {/* Left image */}
+          <div
+            className="hidden bg-AAprimary z-10  py-4 
+          absolute md:grid grid-cols-12 w-full h-full  content-center"
+          >
+            <div className="relative rounded w-full h-full col-span-7 ">
+              <a href="http://1vcian.me/notex/" target={"_blank"} rel="noreferrer">
+                <div
+                  className="absolute w-full h-full rounded bg-AAprimary 
+           transition-opacity opacity-50 hover:opacity-0 hover:cursor-pointer duration-300"
+                ></div>
+              </a>
 
+              <div className="absolute px-2 bg-AAprimary rounded  ml-4 mt-2 ">
+                <span className="text-AAsecondary text-xl">Completed</span>
+              </div>
 
+              <Img src={"/Portfolio/notex.png"} alt={"Notex Project"} className={`w-full h-full object-cover object-center rounded`} />
+            </div>
+          </div>
 
+          {/* right Content */}
+          <div className=" md:absolute py-4  md:grid md:grid-cols-12 w-full h-full  content-center ">
+            {/* background for text in mobile responsive */}
+            <div className="absolute w-full h-full bg-opacity-70 z-0">
+              <div className="relative w-full h-full">
+                <div className="absolute w-full h-full bg-AAsecondary opacity-10 z-10"></div>
+                <div className="absolute w-full h-full bg-AAprimary opacity-80 z-10"></div>
+                <Img src={"/Portfolio/notex.png"} alt={"Notex Project"} className={`w-full h-full object-cover object-center`} />
+              </div>
+            </div>
+            <div className="absolute w-full   rounded  ml-4 mt-2  text-end pr-8">
+              <div className="w-full"></div>
+              <span className="text-AAsecondary sm:text-lg bg-AAprimary px-2 py-1 rounded">Completed</span>
+            </div>
+            <div
+              className="px-8 pt-8 sm:pt-12 md:py-0 xl:col-span-6 xl:col-start-7 col-start-5 
+            col-span-8 flex flex-col items-start md:items-end sm:space-y-3 space-y-1"
+            >
+              <div className="flex flex-col space-y-1 md:items-end z-10">
+                <span className="text-AAsecondary text-base">Progressive Web App</span>
+                <a href="http://1vcian.me/notex/" target={"_blank"} rel="noreferrer">
+                  <span className=" md:text-gray-200 text-AAsecondary font-bold text-xl hover:cursor-pointer">
+                    Notex
+                  </span>
+                </a>
+              </div>
+              <div className="w-full md:bg-AAtertiary rounded-md py-6 md:p-6  z-10">
+                <p className="text-gray-300 md:text-gray-400 text-left md:text-right">
+                  A lightning-fast, zero-dependency <span className="text-AAsecondary">PWA Markdown editor</span>. Data is stored entirely locally and notes are shared using a unique <span className="text-AAsecondary">zero-login hash system</span>, encoding compressed note states directly into the URL sharing links using Deflate compression, enabling instant serverless collaboration.
+                </p>
+              </div>
+              <ul
+                className="flex flex-wrap w-full text-gray-300 md:text-gray-400
+               text-sm font-Text2 md:justify-end"
+              >
+                <span className="pr-4 z-10">PWA</span>
+                <span className="pr-4 z-10">Markdown-it</span>
+                <span className="pr-4 z-10">PrismJS</span>
+                <span className="pr-4 z-10">LZ Compression</span>
+              </ul>
+              <div className="z-10 flex fle-row space-x-5 sm:pt-0 pt-2">
+                <GithubIcon link="https://github.com/1vcian/notex" />
+                <a href="http://1vcian.me/notex/" target={"_blank"} rel="noreferrer">
+                  <ExternalLink url={""} router={router} />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
 
         {/* // ? Project wolf & mafia */}
         <div data-aos="fade-up" className="relative md:grid md:grid-cols-12 w-full md:h-96">
@@ -550,8 +618,75 @@ export default function SomethingIveBuilt() {
           </div>
         </div>
 
+        {/* // ? Project Amazon-Prismatic-Bot */}
+        <div data-aos="fade-up" className="relative md:grid md:grid-cols-12 w-full md:h-96">
+          {/* Left image */}
+          <div
+            className="hidden bg-AAprimary z-10  py-4 
+          absolute md:grid grid-cols-12 w-full h-full  content-center"
+          >
+            <div className="relative rounded w-full h-full col-span-7 ">
+              <a href="https://github.com/1vcian/Amazon-Prismatic-Bot" target={"_blank"} rel="noreferrer">
+                <div
+                  className="absolute w-full h-full rounded bg-AAprimary 
+           transition-opacity opacity-50 hover:opacity-0 hover:cursor-pointer duration-300"
+                ></div>
+              </a>
 
+              <div className="absolute px-2 bg-AAprimary rounded  ml-4 mt-2 ">
+                <span className="text-AAsecondary text-xl">Active</span>
+              </div>
 
+              <Img src={"/Portfolio/amazon_bot.png"} alt={"Amazon Prismatic Bot"} className={`w-full h-full object-cover object-center rounded`} />
+            </div>
+          </div>
+
+          {/* right Content */}
+          <div className=" md:absolute py-4  md:grid md:grid-cols-12 w-full h-full  content-center ">
+            {/* background for text in mobile responsive */}
+            <div className="absolute w-full h-full bg-opacity-70 z-0">
+              <div className="relative w-full h-full">
+                <div className="absolute w-full h-full bg-AAsecondary opacity-10 z-10"></div>
+                <div className="absolute w-full h-full bg-AAprimary opacity-80 z-10"></div>
+                <Img src={"/Portfolio/amazon_bot.png"} alt={"Amazon Prismatic Bot"} className={`w-full h-full object-cover object-center`} />
+              </div>
+            </div>
+            <div className="absolute w-full   rounded  ml-4 mt-2  text-end pr-8">
+              <div className="w-full"></div>
+              <span className="text-AAsecondary sm:text-lg bg-AAprimary px-2 py-1 rounded">Active</span>
+            </div>
+            <div
+              className="px-8 pt-8 sm:pt-12 md:py-0 xl:col-span-6 xl:col-start-7 col-start-5 
+            col-span-8 flex flex-col items-start md:items-end sm:space-y-3 space-y-1"
+            >
+              <div className="flex flex-col space-y-1 md:items-end z-10">
+                <span className="text-AAsecondary text-base">Telegram Automation</span>
+                <a href="https://github.com/1vcian/Amazon-Prismatic-Bot" target={"_blank"} rel="noreferrer">
+                  <span className=" md:text-gray-200 text-AAsecondary font-bold text-xl hover:cursor-pointer">
+                    Amazon Prismatic Bot
+                  </span>
+                </a>
+              </div>
+              <div className="w-full md:bg-AAtertiary rounded-md py-6 md:p-6  z-10">
+                <p className="text-gray-300 md:text-gray-400 text-left md:text-right">
+                  A Node.js Telegram stock bot designed to monitor Amazon listings for Pokémon TCG <span className="text-AAsecondary">"Prismatic Evolutions"</span> products. It leverages Jina AI Reader to cleanly fetch, parse, and identify changes (new listings, price updates, stock returns) and alerts subscribed users instantly with rich messages and inline buttons.
+                </p>
+              </div>
+              <ul
+                className="flex flex-wrap w-full text-gray-300 md:text-gray-400
+               text-sm font-Text2 md:justify-end"
+              >
+                <span className="pr-4 z-10">Node.js</span>
+                <span className="pr-4 z-10">Telegram API</span>
+                <span className="pr-4 z-10">Jina AI Reader</span>
+                <span className="pr-4 z-10">Automation</span>
+              </ul>
+              <div className="z-10 flex fle-row space-x-5 sm:pt-0 pt-2">
+                <GithubIcon link="https://github.com/1vcian/Amazon-Prismatic-Bot" />
+              </div>
+            </div>
+          </div>
+        </div>
 
         {/* // ? Project common cast*/}
         <div data-aos="fade-up" className="relative md:grid md:grid-cols-12 w-full md:h-96">
