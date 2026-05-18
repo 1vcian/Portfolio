@@ -30,11 +30,12 @@ const AboutMe = forwardRef<HTMLDivElement>((props, ref) => {
           <div className="w-full md:w-7/12 space-y-4 sm:text-base text-sm ">
             <div className="font-Header text-justify">
               <span className="text-gray-400 ">
-                Hello! My name is Lucian, and I&apos;m a passionate{" "}
-                <span className="text-AAsecondary"> Full Stack Software Engineer</span> with strong problem-solving skills. My
+                Hello! My name is Lucian, and I&apos;m an{" "}
+                <span className="text-AAsecondary">Engineer with 5+ years of experience</span> building production systems for public institutions. 
+                I care about code that <span className="text-AAsecondary">actually ships and scales</span>, from satellite imagery pipelines to offline mobile games. My
                 journey in computer science started at 12 years old when I explored Ethical Hacking using BackTrack OS,
                 which started my interest in programming. Over the years, I continued to learn coding by myself, which led
-                me to pursue an <span className="text-AAsecondary">computer engineering degree</span>, making me a professional
+                me to pursue a <span className="text-AAsecondary">computer engineering degree</span>, making me a professional
                 in this field.
               </span>
             </div>
