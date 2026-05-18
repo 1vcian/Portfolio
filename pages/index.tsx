@@ -14,6 +14,7 @@ import "aos/dist/aos.css";
 import Head from "next/head";
 import ScreenSizeDetector from "../components/CustomComponents/ScreenSizeDetector";
 import Maintenance from "../components/Home/Maintenance/Maintenance";
+import ThisCantBeReached from "../components/Home/ThisSiteCantBeReached/ThisCantBeReached";
 export default function Home() {
   const [ShowElement, setShowElement] = useState(true);
   const [ShowThisCantBeReached, setShowThisCantBeReached] = useState(false);
