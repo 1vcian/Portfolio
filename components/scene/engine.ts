@@ -35,6 +35,8 @@ import {
 
 export type SceneDom = {
   canvas: HTMLCanvasElement;
+  /** The darkening layer over the canvas. */
+  scrim: HTMLElement;
   /** The little spacecraft's caption: what it is doing and how high it is. */
   alt: HTMLElement;
   phase: HTMLElement;
@@ -114,15 +116,21 @@ export class OrbitScene {
   private romeUnit = new Vector3();
   private bg = new Color();
   private hudCache: Record<string, string> = {};
+  private maxPixelRatio = 2;
+  private lastSide = -1;
+  private sizeWatcher: ResizeObserver | null = null;
 
   constructor(private dom: SceneDom) {
-    this.renderer = new WebGLRenderer({ canvas: dom.canvas, antialias: true, alpha: false, powerPreference: "high-performance" });
+    // Phones and small laptops get a lighter scene: fewer dots, no
+    // multisampling, and fewer pixels to fill on very dense screens.
+    const low = Math.min(window.innerWidth, window.innerHeight) < 700 || (navigator.hardwareConcurrency || 8) <= 4;
+    const quality = low ? "low" : "high";
+    this.maxPixelRatio = low ? 1.5 : 2;
+
+    this.renderer = new WebGLRenderer({ canvas: dom.canvas, antialias: !low, alpha: false, powerPreference: "high-performance" });
     this.renderer.setClearColor(SPACE, 1);
     this.camera.position.set(0, 0, CAMERA_Z);
     this.reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-
-    const low = Math.min(window.innerWidth, window.innerHeight) < 700 || (navigator.hardwareConcurrency || 8) <= 4;
-    const quality = low ? "low" : "high";
 
     const v = [0, 0, 0];
     lonLatToVec(ROME.lon, ROME.lat, v);
@@ -319,7 +327,12 @@ export class OrbitScene {
     this.scratch = { ...this.states.orbit };
 
     this.resize();
-    window.addEventListener("resize", this.resize);
+    // The canvas is as tall as the largest viewport (see .scene in the CSS), so
+    // its box does not change when a phone's address bar slides in and out.
+    // Watching the box instead of the window avoids reallocating the drawing
+    // buffer in the middle of a scroll.
+    this.sizeWatcher = new ResizeObserver(this.resize);
+    this.sizeWatcher.observe(dom.canvas);
     window.addEventListener("pointermove", this.onPointer, { passive: true });
     window.addEventListener("pointerdown", this.onPointerDown);
     window.addEventListener("pointerup", this.onPointerUp);
@@ -346,7 +359,7 @@ export class OrbitScene {
 
   dispose() {
     this.stop();
-    window.removeEventListener("resize", this.resize);
+    this.sizeWatcher?.disconnect();
     window.removeEventListener("pointermove", this.onPointer);
     window.removeEventListener("pointerdown", this.onPointerDown);
     window.removeEventListener("pointerup", this.onPointerUp);
@@ -470,10 +483,13 @@ export class OrbitScene {
   }
 
   private resize = () => {
-    this.width = window.innerWidth;
-    this.height = window.innerHeight;
+    const width = this.dom.canvas.clientWidth || window.innerWidth;
+    const height = this.dom.canvas.clientHeight || window.innerHeight;
+    if (width === this.width && height === this.height && this.sections.length) return;
+    this.width = width;
+    this.height = height;
     const aspect = this.width / Math.max(this.height, 1);
-    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, this.maxPixelRatio));
     this.renderer.setSize(this.width, this.height, false);
     this.camera.aspect = aspect;
     this.camera.updateProjectionMatrix();
@@ -494,7 +510,7 @@ export class OrbitScene {
 
   /** Where the scene should be for the current scroll position. */
   private readScroll() {
-    const vh = this.height;
+    const vh = window.innerHeight;
     const out = this.target;
     let phase = 0;
     if (!this.sections.length) this.resize();
@@ -534,7 +550,7 @@ export class OrbitScene {
     this.settled = true;
 
     // The page scrolls, the fields scroll with it (slower, like a far layer).
-    const flyTarget = (window.scrollY / Math.max(this.height, 1)) * 1.6 + this.time * 0.06;
+    const flyTarget = (window.scrollY / Math.max(window.innerHeight, 1)) * 1.6 + this.time * 0.06;
     this.fly += (flyTarget - this.fly) * k;
 
     // Spin freely, or settle on the nearest turn that puts Rome in front.
@@ -648,11 +664,19 @@ export class OrbitScene {
   private place(el: HTMLElement, world: Vector3, opacity: number) {
     const p = world.clone().project(this.camera);
     const visible = opacity > 0.02 && p.z < 1 && Math.abs(p.x) < 1.2 && Math.abs(p.y) < 1.2;
-    el.style.opacity = visible ? opacity.toFixed(3) : "0";
+    const shown = visible ? opacity.toFixed(2) : "0";
+    if (el.dataset.o !== shown) {
+      el.dataset.o = shown;
+      el.style.opacity = shown;
+    }
     if (visible) {
       const x = (p.x * 0.5 + 0.5) * this.width;
       const y = (-p.y * 0.5 + 0.5) * this.height;
-      el.style.transform = `translate3d(${x.toFixed(1)}px, ${y.toFixed(1)}px, 0)`;
+      const at = `translate3d(${x.toFixed(1)}px, ${y.toFixed(1)}px, 0)`;
+      if (el.dataset.t !== at) {
+        el.dataset.t = at;
+        el.style.transform = at;
+      }
     }
   }
 
@@ -671,6 +695,11 @@ export class OrbitScene {
     const index = Math.max(0, PHASES.findIndex((p) => p.key === key));
     this.setText("phase", this.dom.phase, PHASES[index].label);
 
-    document.documentElement.style.setProperty("--side", s.side.toFixed(3));
+    // Set on the scrim itself: a variable written on <html> would make the
+    // browser recompute the style of the whole page on every frame.
+    if (Math.abs(s.side - this.lastSide) > 0.004) {
+      this.lastSide = s.side;
+      this.dom.scrim.style.setProperty("--side", s.side.toFixed(2));
+    }
   }
 }

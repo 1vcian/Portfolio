@@ -200,7 +200,11 @@ code {
 
 .scene {
   position: fixed;
-  inset: 0;
+  inset: 0 0 auto 0;
+  /* As tall as the viewport gets with a phone's address bar hidden, so the
+     canvas never has to be resized while the bar slides in and out. */
+  height: 100vh;
+  height: 100lvh;
   z-index: 0;
   overflow: hidden;
   pointer-events: none;
@@ -2475,6 +2479,33 @@ html .card.reveal:hover {
 @media (max-width: 520px) {
   .facts {
     grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* ── Touch screens ──────────────────────────────────────────────────────── */
+
+/* A finger scrolls the page off the main thread, so anything script-driven
+   that slides against the scroll reads as stutter. Keep the tilts, drop the
+   counter-slides, and keep the paint work light. */
+@media (hover: none) and (pointer: coarse) {
+  .shot {
+    transform: perspective(1400px) rotateY(calc((var(--p) - 0.5) * var(--dir) * 18deg)) rotate(calc(var(--dir) * -1.4deg));
+  }
+  .checklist {
+    transform: rotate(calc(1.5deg + (var(--p) - 0.5) * -4deg));
+  }
+  .fx--moon {
+    transform: translateY(calc((0.72 - var(--p)) * 110px));
+  }
+  .sec-head,
+  .sec-intro,
+  .sub-head,
+  .contact__lead,
+  .terminal__hint,
+  .about__text,
+  .stack,
+  .resume__text > .prose {
+    text-shadow: 0 0 6px var(--bg), 0 0 2px var(--bg);
   }
 }
 

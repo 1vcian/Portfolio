@@ -53,55 +53,72 @@ float noise(vec2 p) {
 float fbm(vec2 p) { return noise(p) * 0.6 + noise(p * 2.1 + 7.3) * 0.28 + noise(p * 4.3 + 1.7) * 0.12; }
 
 void main() {
-  // ── globe ────────────────────────────────────────────────────────────────
-  vec4 gw = uGlobe * vec4(position, 1.0);
-  vec3 gn = normalize(mat3(uGlobe) * position);
-  float facing = dot(gn, normalize(uCam - gw.xyz));
-  float gVisible = smoothstep(-0.04, 0.28, facing);   // the far side fades out
+  // Only the side of the morph that is on screen is computed: in orbit the
+  // ground is skipped, on the ground the globe is. That halves the work per
+  // dot in every resting state, which matters on phones.
+  bool needGlobe = uMorph < 0.999;
+  bool needGround = uMorph > 0.001;
 
+  // ── globe ────────────────────────────────────────────────────────────────
+  vec4 gw = vec4(0.0);
   vec3 gCol = LAND;
   float gA = 0.0;
   float gSize = 2.6;
-  if (aKind < 0.5) {               // world-wide dot
-    gA = 0.95;
-  } else if (aKind < 1.5) {        // dense European dot
-    gCol = COAST; gA = 0.9 * uDetail; gSize = 2.7;
-  } else if (aKind < 2.5) {        // Italy
-    gCol = AMBER; gA = mix(0.6, 1.0, uDetail); gSize = mix(1.9, 3.5, uDetail);
-  } else if (aKind < 3.5) {        // world-wide dot inside the dense box
-    gA = 0.95 * (1.0 - uDetail);
+  if (needGlobe) {
+    gw = uGlobe * vec4(position, 1.0);
+    vec3 gn = normalize(mat3(uGlobe) * position);
+    float facing = dot(gn, normalize(uCam - gw.xyz));
+    float gVisible = smoothstep(-0.04, 0.28, facing);   // the far side fades out
+
+    if (aKind < 0.5) {               // world-wide dot
+      gA = 0.95;
+    } else if (aKind < 1.5) {        // dense European dot
+      gCol = COAST; gA = 0.9 * uDetail; gSize = 2.7;
+    } else if (aKind < 2.5) {        // Italy
+      gCol = AMBER; gA = mix(0.6, 1.0, uDetail); gSize = mix(1.9, 3.5, uDetail);
+    } else if (aKind < 3.5) {        // world-wide dot inside the dense box
+      gA = 0.95 * (1.0 - uDetail);
+    }
+    float twinkle = 0.72 + 0.28 * sin(uTime * (0.5 + aRand.y * 1.5) + aRand.x * 6.2832);
+    gA *= gVisible * mix(1.0, twinkle, uTwinkle);
   }
-  float twinkle = 0.72 + 0.28 * sin(uTime * (0.5 + aRand.y * 1.5) + aRand.x * 6.2832);
-  gA *= gVisible * mix(1.0, twinkle, uTwinkle);
 
   // ── ground ───────────────────────────────────────────────────────────────
   // Dots wrap around in depth; the content they show travels with them, so
   // the fields scroll past instead of popping.
   float zl = fract(aGround.y + uFly / uGroundSize.y);
-  vec2 c = vec2(aGround.x * uGroundSize.x, zl * uGroundSize.y - uFly);
-  float height = (fbm(c * 0.21) - 0.5) * 1.7;
-  vec4 tw = uGround * vec4(c.x, height, (zl - 0.5) * uGroundSize.y, 1.0);
+  vec4 tw = gw;
+  vec3 tCol = gCol;
+  float tA = 0.0;
+  if (needGround) {
+    vec2 c = vec2(aGround.x * uGroundSize.x, zl * uGroundSize.y - uFly);
+    float height = (fbm(c * 0.21) - 0.5) * 1.7;
+    tw = uGround * vec4(c.x, height, (zl - 0.5) * uGroundSize.y, 1.0);
 
-  // Field parcels: a warped brick pattern, each brick one crop.
-  vec2 w = c + 0.55 * vec2(noise(c * 0.4 + 3.1), noise(c * 0.4 + 9.7));
-  vec2 cell = vec2(1.3, 0.82);
-  vec2 pc = w / cell;
-  pc.x += hash(vec2(floor(pc.y), 3.7));
-  vec2 id = floor(pc);
-  vec2 f = fract(pc);
-  float edge = min(min(f.x, 1.0 - f.x) * cell.x, min(f.y, 1.0 - f.y) * cell.y);
-  float inside = smoothstep(0.03, 0.12, edge);
-  float crop = hash(id + 0.5);
-  vec3 tCol = crop < 0.30 ? WHEAT : crop < 0.52 ? GREEN : crop < 0.70 ? OLIVE : crop < 0.84 ? SOIL : PALE;
-  // The project on screen lends the fields its colour, some more than others.
-  tCol = mix(tCol, uTint, uTintAmount * (0.3 + 0.6 * hash(id + 3.0)));
-  float tA = mix(0.07, 1.0, inside) * (0.62 + 0.38 * hash(id + 11.0));
-  // A sensor pass sweeps over the fields every few seconds.
-  float scan = smoothstep(0.05, 0.0, abs(zl - fract(uTime * 0.055))) * uTwinkle;
-  tCol = mix(tCol, vec3(1.0), scan * 0.7);
-  tA = min(1.0, tA + scan * 0.6);
-  // Fade out at the edges; the far one fades slowly so the horizon view dissolves into the sky.
-  tA *= smoothstep(0.0, 0.2, zl) * smoothstep(1.0, 0.93, zl) * smoothstep(0.5, 0.45, abs(aGround.x));
+    // Field parcels: a warped brick pattern, each brick one crop.
+    vec2 w = c + 0.55 * vec2(noise(c * 0.4 + 3.1), noise(c * 0.4 + 9.7));
+    vec2 cell = vec2(1.3, 0.82);
+    vec2 pc = w / cell;
+    pc.x += hash(vec2(floor(pc.y), 3.7));
+    vec2 id = floor(pc);
+    vec2 f = fract(pc);
+    float edge = min(min(f.x, 1.0 - f.x) * cell.x, min(f.y, 1.0 - f.y) * cell.y);
+    float inside = smoothstep(0.03, 0.12, edge);
+    float crop = hash(id + 0.5);
+    tCol = crop < 0.30 ? WHEAT : crop < 0.52 ? GREEN : crop < 0.70 ? OLIVE : crop < 0.84 ? SOIL : PALE;
+    // The project on screen lends the fields its colour, some more than others.
+    tCol = mix(tCol, uTint, uTintAmount * (0.3 + 0.6 * hash(id + 3.0)));
+    tA = mix(0.07, 1.0, inside) * (0.62 + 0.38 * hash(id + 11.0));
+    // A sensor pass sweeps over the fields every few seconds.
+    float scan = smoothstep(0.05, 0.0, abs(zl - fract(uTime * 0.055))) * uTwinkle;
+    tCol = mix(tCol, vec3(1.0), scan * 0.7);
+    tA = min(1.0, tA + scan * 0.6);
+    // Fade out at the edges; the far one fades slowly so the horizon view dissolves into the sky.
+    tA *= smoothstep(0.0, 0.2, zl) * smoothstep(1.0, 0.93, zl) * smoothstep(0.5, 0.45, abs(aGround.x));
+  } else {
+    tw = gw;
+  }
+  if (!needGlobe) gw = tw;
 
   // ── morph ────────────────────────────────────────────────────────────────
   // The ground assembles as a wave, from the near edge to the far one, with

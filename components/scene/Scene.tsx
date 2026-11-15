@@ -9,6 +9,7 @@ import type { OrbitScene } from "./engine";
  */
 export default function SceneLayer() {
   const canvas = useRef<HTMLCanvasElement>(null);
+  const scrim = useRef<HTMLDivElement>(null);
   const alt = useRef<HTMLElement>(null);
   const phase = useRef<HTMLSpanElement>(null);
   const rome = useRef<HTMLDivElement>(null);
@@ -25,6 +26,7 @@ export default function SceneLayer() {
         if (cancelled) return;
         scene = new OrbitScene({
           canvas: canvas.current!,
+          scrim: scrim.current!,
           alt: alt.current!,
           phase: phase.current!,
           rome: rome.current!,
@@ -49,7 +51,7 @@ export default function SceneLayer() {
   return (
     <div className={`scene scene--${state}`} aria-hidden="true">
       <canvas ref={canvas} className="scene__canvas" />
-      <div className="scene__scrim" />
+      <div ref={scrim} className="scene__scrim" />
 
       <div ref={rome} className="pin pin--rome">
         <MapPin />
