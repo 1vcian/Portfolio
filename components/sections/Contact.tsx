@@ -47,9 +47,18 @@ export default function Contact() {
             <code>{COMMAND}</code>
             {copied ? <Check /> : <Copy />}
           </button>
-          <span className="terminal__status" role="status">
-            {copied ? "copied!" : ""}
-          </span>
+          {/* One line under the command: where its source lives, or the confirmation after a copy. */}
+          <div className="terminal__after">
+            <span className="terminal__status" role="status">
+              {copied ? "copied! now paste it in a terminal" : ""}
+            </span>
+            {!copied && (
+              <a className="terminal__source" href={site.card} target="_blank" rel="noreferrer">
+                it&apos;s open source: take it and make your own
+                <span aria-hidden="true"> ↗</span>
+              </a>
+            )}
+          </div>
         </Reveal>
 
         <Reveal className="socials">

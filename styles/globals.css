@@ -953,6 +953,7 @@ h2 em::after {
 .sub-head,
 .contact__lead,
 .terminal__hint,
+.terminal__after,
 .about__text,
 .stack,
 .resume__text > .prose {
@@ -2268,10 +2269,34 @@ html .card.reveal:hover {
   color: var(--muted);
 }
 
+.terminal__after {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 30px;
+  margin-top: 4px;
+  font: 700 1.3rem/1.1 var(--hand);
+  text-align: center;
+}
+
 .terminal__status {
-  height: 22px;
-  font: 700 1.3rem/1 var(--hand);
   color: #63dc9c;
+}
+
+.terminal__status:empty {
+  display: none;
+}
+
+.terminal__source {
+  padding-bottom: 2px;
+  border-bottom: 2px dashed var(--accent);
+  color: var(--paper);
+  transition: color 0.15s var(--ease), border-color 0.15s var(--ease);
+}
+
+.terminal__source:hover {
+  border-bottom-style: solid;
+  color: var(--accent);
 }
 
 .socials {
@@ -2305,7 +2330,25 @@ html .card.reveal:hover {
   height: 22px;
 }
 
+/* The im.center badge is dark and blue: give it the same ink outline and
+   yellow shadow as the buttons, or it melts into the planet behind it. */
+.socials__badge {
+  display: block;
+  overflow: hidden;
+  border: 3px solid var(--ink);
+  border-radius: 999px;
+  background: var(--ink);
+  box-shadow: 0 0 0 2px var(--accent), 5px 5px 0 2px var(--accent);
+  line-height: 0;
+  transition: transform 0.25s var(--bounce);
+}
+
+.socials__badge:hover {
+  transform: rotate(-2deg) scale(1.05);
+}
+
 .socials__badge img {
+  display: block;
   width: auto;
   height: 36px;
 }
@@ -2502,6 +2545,7 @@ html .card.reveal:hover {
   .sub-head,
   .contact__lead,
   .terminal__hint,
+  .terminal__after,
   .about__text,
   .stack,
   .resume__text > .prose {

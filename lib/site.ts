@@ -12,6 +12,8 @@ export const site = {
   url: "https://1vcian.me/Portfolio/",
   email: "medrihanlucian@gmail.com",
   repo: "https://github.com/1vcian/Portfolio",
+  /** Source of the `npx 1vcian` terminal card. */
+  card: "https://github.com/1vcian/npx-card",
   description:
     "Software engineer in Rome. 5+ years building production systems for public institutions, from satellite imagery pipelines to mobile games on the stores.",
   socials: {
