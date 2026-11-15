@@ -76,7 +76,7 @@ void main() {
       gCol = COAST; gA = 0.9 * uDetail; gSize = 2.7;
     } else if (aKind < 2.5) {        // Italy
       gCol = AMBER; gA = mix(0.6, 1.0, uDetail); gSize = mix(1.9, 3.5, uDetail);
-    } else if (aKind < 3.5) {        // world-wide dot inside the dense box
+    } else if (aKind < 3.5) {        // world-wide dot where the dense ones take over
       gA = 0.95 * (1.0 - uDetail);
     }
     float twinkle = 0.72 + 0.28 * sin(uTime * (0.5 + aRand.y * 1.5) + aRand.x * 6.2832);

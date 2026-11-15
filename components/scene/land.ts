@@ -9,11 +9,11 @@ const DEG = Math.PI / 180;
 export const KIND = {
   /** Sparse world-wide land dot. */
   GLOBAL: 0,
-  /** Dense dot around Europe: only visible once zoomed in. */
+  /** Dense dot around Italy: only visible once zoomed in. */
   DENSE: 1,
   /** Dense dot inside Italy: always lit, in the accent colour. */
   ITALY: 2,
-  /** Sparse dot inside the dense box: hands over to the dense ones on zoom. */
+  /** Sparse dot where the dense ones take over: hands over to them on zoom. */
   GLOBAL_IN_BOX: 3,
   /** Has no place on the globe; only appears in the ground state. */
   EXTRA: 4,
@@ -41,8 +41,28 @@ export function lonLatToVec(lon: number, lat: number, out: number[] | Float32Arr
   out[o + 2] = Math.cos(phi) * Math.cos(lam);
 }
 
-// The area that gets extra detail when the camera closes in on Italy.
-const BOX = { west: -9, east: 34, south: 31, north: 56 };
+// The extra detail that appears when the camera closes in on Italy has no
+// border. It is complete within CORE degrees of the focus, and from there the
+// dots thin out little by little until, EDGE degrees away, only the sparse
+// world-wide ones are left.
+const FOCUS = { lon: 12.5, lat: 43, core: 9, edge: 30 };
+
+/** Great-circle distance between two places, in degrees. */
+function apart(lon1: number, lat1: number, lon2: number, lat2: number) {
+  const a = lat1 * DEG;
+  const b = lat2 * DEG;
+  const cos = Math.sin(a) * Math.sin(b) + Math.cos(a) * Math.cos(b) * Math.cos((lon2 - lon1) * DEG);
+  return Math.acos(Math.min(1, Math.max(-1, cos))) / DEG;
+}
+
+/** How close a place is to the focus: 1 inside the core, easing down to 0 at the edge. */
+function nearness(lon: number, lat: number) {
+  const t = Math.min(1, Math.max(0, (FOCUS.edge - apart(lon, lat, FOCUS.lon, FOCUS.lat)) / (FOCUS.edge - FOCUS.core)));
+  return t * t * (3 - 2 * t);
+}
+
+/** Does this mask reach the place? Outside it the sampler would just say "sea". */
+const covers = (m: Mask, lon: number, lat: number) => lon >= m.lon0 && lon < m.lon0 + m.w * m.step && lat <= m.lat0 && lat > m.lat0 - m.h * m.step;
 
 export type LandPoints = { positions: number[]; kinds: number[] };
 
@@ -69,18 +89,34 @@ export function buildLandPoints(quality: "high" | "low"): LandPoints {
     let lon = ((k * golden) / DEG) % 360;
     if (lon > 180) lon -= 360;
     if (!isLand(lon, lat)) continue;
-    const inBox = lon > BOX.west && lon < BOX.east && lat > BOX.south && lat < BOX.north;
-    push(lon, lat, inBox ? KIND.GLOBAL_IN_BOX : KIND.GLOBAL);
+    // Near the focus the dense dots take over on zoom; further out the sparse ones stay.
+    push(lon, lat, nearness(lon, lat) > 0.6 ? KIND.GLOBAL_IN_BOX : KIND.GLOBAL);
   }
 
-  // 2. Europe and the Mediterranean on a staggered grid, like a dot-matrix map.
+  // 2. Around Italy, a staggered grid like a dot-matrix map. The grid is
+  // complete near the focus and keeps a smaller and smaller share of its dots
+  // on the way out. The share follows the density, not the distance: it goes
+  // from "as many as the sparse dots" to "all of them" in even steps for the
+  // eye, which is why it is an exponential.
   const step = quality === "high" ? 0.18 : 0.27;
+  const sparseStep = Math.sqrt((4 * Math.PI) / candidates) / DEG; // spacing of the world-wide dots, in degrees
+  const ratio = (sparseStep / step) ** 2; // how many times denser the grid is
+  const region = masks.region as Mask;
   let row = 0;
-  for (let lat = BOX.south; lat <= BOX.north; lat += step, row++) {
+  for (let lat = FOCUS.lat - FOCUS.edge; lat <= FOCUS.lat + FOCUS.edge; lat += step, row++) {
     const lonStep = step / Math.cos(lat * DEG);
+    const reach = FOCUS.edge / Math.cos(lat * DEG);
     const offset = row % 2 ? lonStep / 2 : 0;
-    for (let lon = BOX.west + offset; lon <= BOX.east; lon += lonStep) {
-      if (!isLandFine(lon, lat)) continue;
+    let column = 0;
+    for (let lon = FOCUS.lon - reach + offset; lon <= FOCUS.lon + reach; lon += lonStep, column++) {
+      const near = nearness(lon, lat);
+      if (near <= 0) continue;
+      const share = (ratio ** near - 1) / (ratio - 1);
+      // Which dots stay is decided by a low-discrepancy pattern, so the ones left are evenly spread, not clumped.
+      const rank = (column * 0.7548776662 + row * 0.569840291) % 1;
+      if (rank >= share) continue;
+      const land = covers(region, lon, lat) ? isLandFine(lon, lat) : isLand(lon, lat);
+      if (!land) continue;
       push(lon, lat, isItaly(lon, lat) ? KIND.ITALY : KIND.DENSE);
     }
   }
