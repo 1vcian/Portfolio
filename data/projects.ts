@@ -254,19 +254,19 @@ export const featured: Project[] = [
     media: { type: "wide", src: "/projects/sentinel.webp", alt: "Satellite image before and after AI super-resolution" },
   },
   {
-    slug: "agea",
+    slug: "vinitaly",
     tint: "#f0668a",
     fx: "wine",
-    title: "AGEA Vinitaly 2026",
+    title: "Vinitaly 2026",
     kicker: "At work · Geospatial",
     status: { label: "Live", tone: "live" },
     paragraphs: [
-      "The official web application for **Vinitaly 2026**, developed independently in collaboration with AGEA.",
+      "A web application made for **Vinitaly 2026**, which I developed independently.",
       "It uses **PMTiles** to visualise an enormous geospatial dataset, rendering every agricultural plot of land across Italy with high performance.",
     ],
     tags: ["Geospatial", "PMTiles", "React"],
-    links: { live: "https://agea-vinitaly-2026.sian.it/" },
-    media: { type: "wide", src: "/projects/agea.webp", alt: "AGEA Vinitaly 2026 map of Italian agricultural parcels" },
+    links: {},
+    media: { type: "wide", src: "/projects/vinitaly.webp", alt: "Vinitaly 2026 map of Italian agricultural parcels" },
   },
 ];
 
@@ -311,7 +311,7 @@ export const more: SmallProject[] = [
     slug: "openlayers",
     title: "OpenLayers Webapps",
     kicker: "At work · GIS",
-    text: "Full-stack applications for the Italian Ministry of Agriculture that manage feature layers and attributes, with massive batch processing of geographic data.",
+    text: "Full-stack applications that manage feature layers and attributes, with massive batch processing of geographic data.",
     tags: ["GeoServer", "Angular", "SQL", "GeoPandas", "LLM", "SAM"],
     links: {},
     image: "/projects/geo.webp",

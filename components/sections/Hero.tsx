@@ -23,7 +23,7 @@ export default function Hero() {
         </p>
 
         <p className="hero__sub hero__in" style={{ animationDelay: "0.55s" }}>
-          5+ years building production systems for public institutions. The rest of my time goes into what I love: hunting
+          5+ years building GIS and AI systems that run in production. The rest of my time goes into what I love: hunting
           vulnerabilities, shipping apps and building open-source tools.
         </p>
 

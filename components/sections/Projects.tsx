@@ -119,7 +119,7 @@ function ProjectFx({ fx }: { fx: Fx }) {
           <i />
         </div>
       );
-    // AGEA Vinitaly: a glass that fills up
+    // Vinitaly: a glass that fills up
     case "wine":
       return (
         <svg className="fx fx--wine" viewBox="0 0 60 100" aria-hidden="true">

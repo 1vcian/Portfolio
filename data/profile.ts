@@ -2,12 +2,12 @@
 
 export const about = {
   paragraphs: [
-    "I'm Lucian, a software engineer with **5+ years building production systems for public institutions**. I care about code that actually ships and scales: GIS platforms, management systems, and machine-learning work on satellite imagery and LLMs, on projects for the **Italian Ministry of Agriculture** and **ESA**.",
+    "I'm Lucian, a software engineer with **5+ years building production systems**. I care about code that actually ships and scales: GIS platforms, management systems, and machine-learning work on satellite imagery and LLMs.",
     "It started at 12, poking at things with BackTrack to see how they break. That curiosity became a degree in **Computer and Automation Engineering** at Sapienza and a CTF team I co-founded, and it never switched off.",
     "My free time still goes where the fun is. I hunt bugs because I enjoy it: I've found and reported **a lot of vulnerabilities, several of them rated CVSS 10**. And I build the ideas I can't leave alone: games on the App Store and Google Play, open-source tools with their own communities, even an emulator.",
   ],
   facts: [
-    { value: "5+ yrs", label: "building production systems for public institutions" },
+    { value: "5+ yrs", label: "building GIS and AI systems that run in production" },
     { value: "Bug hunter", label: "many vulnerabilities found in my free time, several of them rated CVSS 10" },
     { value: "€4M → €500/mo", label: "imagery costs, from 30 cm every three years to AI-upscaled updates every month" },
     { value: "Google Workshop", label: "winner with UniverCity, presented at Google Tel Aviv" },
@@ -34,19 +34,19 @@ export const jobs: Job[] = [
     period: "Jun 2025 — Present",
     place: "Rome, Italy",
     points: [
-      "Building advanced agricultural software with the **Italian Ministry of Agriculture**.",
+      "Designing and building **entire management systems** and advanced geospatial software for agriculture.",
       "Managing and mentoring a team of **3 junior developers**, guiding them through software architecture.",
-      "Independently developed the official [AGEA Vinitaly 2026](https://agea-vinitaly-2026.sian.it/) app, using **PMTiles** to show every plot of land in Italy.",
+      "Independently developed a web app for **Vinitaly 2026**, using **PMTiles** to show every plot of land in Italy.",
       "Found and introduced an AI pipeline on **Google Cloud Vertex AI** that generates **1 m satellite imagery from 10 m Sentinel-2** photos, cutting costs from about €4M to about **€500 a month**.",
     ],
   },
   {
     company: "Tiuke",
-    role: "Full Stack Software Engineer",
+    role: "Software Engineer",
     period: "Oct 2019 — Jun 2025",
     place: "Rome, Italy",
     points: [
-      "Developed **5+ web and mobile applications** for the Italian Ministry of Agriculture, serving over **10,000 active users**.",
+      "Developed **5+ web and mobile applications** for agriculture, serving over **10,000 active users**.",
       "Refactored legacy monoliths into responsive web apps, cutting page load times by **40%**.",
       "Built automation tools for integrating mapping layers that made development **3× faster**.",
       "Wrote backend systems for automated report generation, saving about **15 hours of manual work a week**.",

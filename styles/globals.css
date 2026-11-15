@@ -1881,7 +1881,7 @@ html .fact.reveal:hover {
   clip-path: polygon(50% 0, 0 100%, 100% 100%);
 }
 
-/* AGEA Vinitaly: a glass that fills as you scroll */
+/* Vinitaly: a glass that fills as you scroll */
 .fx--wine {
   right: -30px;
   bottom: -34px;

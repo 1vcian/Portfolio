@@ -84,6 +84,8 @@ export class OrbitScene {
   private current: SceneState;
   private scratch: SceneState;
   private settled = false;
+  /** Altitude shown next to the little spacecraft, as log10 of metres. */
+  private altitude = 0;
 
   private width = 1;
   private height = 1;
@@ -532,6 +534,35 @@ export class OrbitScene {
     return phase;
   }
 
+  /**
+   * How high up we are, as log10 of metres. Unlike the look of the scene,
+   * which changes where two sections meet, the altitude follows the scroll
+   * all the way through a section: however long the page is, the number never
+   * sits still while you are coming down.
+   */
+  private readAltitude() {
+    const sections = this.sections;
+    if (!sections.length) return this.states.orbit.altLog;
+    const vh = window.innerHeight;
+    const line = vh * 0.6; // a section begins when its top edge crosses this line
+    for (let i = 0; i < sections.length - 1; i++) {
+      const nextTop = sections[i + 1].el.getBoundingClientRect().top;
+      if (nextTop <= line) continue; // already past this section
+      const from = sections[i].state.altLog;
+      const to = sections[i + 1].state.altLog;
+      if (to > from) {
+        // Going back up happens at the end, as the next section comes in.
+        const t = Math.min(1, Math.max(0, (vh * 0.9 - nextTop) / (vh * 0.3)));
+        return from + (to - from) * t * t * (3 - 2 * t);
+      }
+      // Coming down takes the whole section. The first one starts at the top of the page.
+      const done = i === 0 ? window.scrollY : line - sections[i].el.getBoundingClientRect().top;
+      const length = i === 0 ? window.scrollY + nextTop - line : nextTop - sections[i].el.getBoundingClientRect().top;
+      return from + (to - from) * Math.min(1, Math.max(0, done / Math.max(length, 1)));
+    }
+    return sections[sections.length - 1].state.altLog;
+  }
+
   private frame = (now: number) => {
     if (!this.running) return;
     this.raf = requestAnimationFrame(this.frame);
@@ -547,6 +578,8 @@ export class OrbitScene {
     const k = !this.settled || still ? 1 : 1 - Math.exp(-dt * 5.5);
     mixStates(s, this.target, k, this.scratch);
     Object.assign(s, this.scratch);
+    const altitude = this.readAltitude();
+    this.altitude = this.settled ? this.altitude + (altitude - this.altitude) * k : altitude;
     this.settled = true;
 
     // The page scrolls, the fields scroll with it (slower, like a far layer).
@@ -687,8 +720,17 @@ export class OrbitScene {
   }
 
   private caption(s: SceneState, phase: number) {
-    const metres = Math.pow(10, s.altLog);
-    const alt = metres >= 10000 ? `${(metres / 1000).toFixed(0)} km up` : metres >= 1000 ? `${(metres / 1000).toFixed(1)} km up` : metres >= 4 ? `${metres.toFixed(0)} m up` : "on the ground";
+    const metres = Math.pow(10, this.altitude);
+    const alt =
+      metres >= 10000
+        ? `${(metres / 1000).toFixed(0)} km up`
+        : metres >= 1000
+          ? `${(metres / 1000).toFixed(1)} km up`
+          : metres >= 10
+            ? `${metres.toFixed(0)} m up`
+            : metres >= 2.05
+              ? `${metres.toFixed(1)} m up`
+              : "on the ground";
     this.setText("alt", this.dom.alt, alt);
 
     const key = this.sections[phase]?.el.dataset.scene;
