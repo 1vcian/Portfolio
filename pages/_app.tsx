@@ -1,86 +1,39 @@
-import "../styles/globals.css";
-import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/next";
+import type { AppProps } from "next/app";
+import { useEffect } from "react";
 
-import AppContext from "../components/AppContextFolder/AppContext";
-import { useRef, useState, useEffect } from "react";
-// import NEXT_PUBLIC_GA_TRACKING_ID form .env
-const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GA_TRACKING_ID;
-// global.d.ts
+import "@fontsource-variable/bricolage-grotesque";
+import "@fontsource-variable/jetbrains-mono";
+import "@fontsource-variable/caveat";
+import "@fontsource/bangers/400.css";
+import "@fontsource/instrument-serif/400.css";
+import "@fontsource/instrument-serif/400-italic.css";
+import "../styles/globals.css";
+
+// Optional Google Analytics: set NEXT_PUBLIC_GA_TRACKING_ID at build time to enable it.
+const GA_ID = process.env.NEXT_PUBLIC_GA_TRACKING_ID;
+
 declare global {
   interface Window {
-    gtag: (...args: any[]) => void;
-    dataLayer: any[];
+    dataLayer: unknown[];
+    gtag: (...args: unknown[]) => void;
   }
 }
-// import useRouter
-import { useRouter } from "next/router";
 
-function MyApp({ Component, pageProps }) {
-  const router = useRouter();
-
+export default function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
-    // Load Google Analytics script
+    if (!GA_ID) return;
     const script = document.createElement("script");
-    script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`;
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
     script.async = true;
     document.head.appendChild(script);
-
-    // Initialize Google Analytics
     window.dataLayer = window.dataLayer || [];
     window.gtag = function () {
+      // eslint-disable-next-line prefer-rest-params
       window.dataLayer.push(arguments);
     };
     window.gtag("js", new Date());
-    window.gtag("config", GA_TRACKING_ID, {
-      page_path: window.location.pathname,
-    });
+    window.gtag("config", GA_ID, { page_path: window.location.pathname });
+  }, []);
 
-    // Track page views
-    const handleRouteChange = (url: string) => {
-      window.gtag("config", GA_TRACKING_ID, {
-        page_path: url,
-      });
-    };
-
-    router.events.on("routeChangeComplete", handleRouteChange);
-
-    return () => {
-      router.events.off("routeChangeComplete", handleRouteChange);
-    };
-  }, [router.events]);
-  const timerCookie = useRef(null);
-  const windowSizeTrackerRef = useRef(null);
-  const mousePositionRef = useRef(null);
-  const [sharedState, setSharedState] = useState({
-    portfolio: {
-      NavBar: {
-        IntervalEvent: null,
-        scrolling: null,
-        scrollSizeY: null,
-      },
-      Scrolling: {
-        IntervalEvent: null,
-      },
-    },
-    userdata: {
-      timerCookieRef: timerCookie,
-      windowSizeTracker: windowSizeTrackerRef,
-      mousePositionTracker: mousePositionRef,
-    },
-    typing: {
-      keyboardEvent: null,
-      eventInputLostFocus: null,
-    },
-    finishedLoading: false,
-  });
-  return (
-    <AppContext.Provider value={{ sharedState, setSharedState }}>
-      <SpeedInsights />
-      <Component {...pageProps} />
-      <Analytics />
-    </AppContext.Provider>
-  );
+  return <Component {...pageProps} />;
 }
-
-export default MyApp;

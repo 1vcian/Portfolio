@@ -1,2 +1,22 @@
 node_modules
 .env.local
+.DS_Store
+
+# build output
+.next
+out
+*.tsbuildinfo
+
+# LaTeX intermediates (the PDFs are built by `npm run resume` / CI)
+resume/**/*.aux
+resume/**/*.log
+resume/**/*.out
+resume/**/*.fls
+resume/**/*.fdb_latexmk
+resume/**/*.synctex.gz
+resume/**/*.pdf
+
+# copied from resume/ at build time
+public/resume_eng.tex
+public/resume_it.tex
+public/resume-template.tex

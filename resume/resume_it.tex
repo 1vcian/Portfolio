@@ -1,0 +1,254 @@
+\documentclass[a4paper,10pt]{extarticle}
+
+% Packages
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{fontawesome5}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{tikz}
+\usepackage{lmodern}  
+
+% Define custom colors
+\definecolor{primary}{RGB}{11, 25, 47}
+\definecolor{darkgray}{RGB}{50, 50, 50}
+\definecolor{lightgray}{RGB}{245, 245, 245}
+\definecolor{linkcolor}{RGB}{70, 130, 210}
+
+% Configure hyperlinks - updated for better clickability
+\hypersetup{
+  colorlinks=true,
+  linkcolor=linkcolor,
+  filecolor=linkcolor,
+  urlcolor=linkcolor,
+  citecolor=linkcolor,
+  pdftitle={Lucian Medrihan CV},
+  pdfauthor={Lucian Medrihan},
+  pdfborder={0 0 1},
+  breaklinks=true,
+  bookmarksopen=true,
+  bookmarksnumbered=true
+}
+
+
+
+% Page geometry
+\geometry{
+  top=0.6cm,
+  bottom=0.6cm,
+  left=1cm,
+  right=1cm
+}
+
+% Remove paragraph indentation
+\setlength{\parindent}{0pt}
+
+% Break lines only between words: no hyphenated words, no stretched spacing
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
+\raggedright
+
+% Section formatting
+\titleformat{\section}
+  {\large\bfseries\color{primary}}
+  {}{0em}{}[\titlerule]
+\titlespacing{\section}{0pt}{6pt}{3pt}
+
+% Skills formatting
+\newcommand{\skill}[1]{
+  \colorbox{lightgray}{\footnotesize #1}
+}
+
+% Timeline dot
+\newcommand{\timelinedot}{
+  \tikz\draw[primary, fill=primary] (0,0) circle (2pt);
+}
+
+% Experience item
+\newcommand{\experienceitem}[5]{
+  \timelinedot~\textbf{#1}\\
+  \textit{#2} \hfill \textit{#3}\\
+  #4\\
+  \begin{itemize}[leftmargin=1em,noitemsep,topsep=0pt,parsep=0pt]
+    #5
+  \end{itemize}
+}
+
+
+\newcommand{\projectitem}[5]{
+  \textbf{#1} \hfill \textit{#2}\\
+  #3 \hfill 
+  \ifnum\pdfstrcmp{#4}{null}=0\else\href{#4}{\faGlobe}\fi
+  \ifnum\pdfstrcmp{#5}{null}=0\else~\href{#5}{\faGithub}\fi\\
+  \begin{itemize}[leftmargin=1em,noitemsep,topsep=0pt,parsep=0pt]
+}
+
+% Rating stars
+\newcommand{\rating}[1]{
+  \foreach \n in {1,...,5}{
+    \ifnum\n>#1
+      \textcolor{lightgray}{$\star$}
+    \else
+      \textcolor{primary}{$\star$}
+    \fi
+  }
+}
+
+% Shorthand for a highlighted keyword: \hl{Python}
+\providecommand{\hl}[1]{\textcolor{linkcolor}{\textbf{#1}}}
+
+% One line of the Skills section: \skillrow{Label}{comma-separated items}
+\newcommand{\skillrow}[2]{\textbf{#1:} #2\par\vspace{0.35em}}
+
+\begin{document}
+
+% Start two-column layout
+\begin{minipage}[t]{0.33\textwidth}
+  \raggedright
+  % Left column content
+  \begin{center}
+    {\fontsize{21}{20}\selectfont\textbf{\textcolor{primary}{Lucian Medrihan}}}\\
+    \vspace{0.2cm}
+    {\large Ingegnere Software}
+  \end{center}
+
+  \section{Chi Sono}
+  Ingegnere con oltre \textbf{5 anni} di esperienza su sistemi in produzione per istituzioni pubbliche, in progetti per SIAN ed ESA. Mi dedico a codice che viene davvero rilasciato e scala, dalle pipeline di immagini satellitari ai giochi~mobile.
+
+  \section{Contatti}
+
+\begin{tabular}{@{}p{0.1\textwidth}p{0.9\textwidth}@{}}
+    \faPhone & \href{tel:+393272898921}{+39 3272898921} \\
+    \faEnvelope & \href{mailto:medrihanlucian@gmail.com}{medrihanlucian@gmail.com} \\
+    \faGlobe & \href{https://1vcian.me}{1vcian.me} \\
+    \faLinkedin & \href{https://linkedin.com/in/lume}{linkedin.com/in/lume} \\
+    \faGithub & \href{https://github.com/1vcian}{github.com/1vcian} \\
+    \faMapMarker & Roma, Italia \\
+  \end{tabular}
+
+  \section{Competenze}
+  \skillrow{Linguaggi}{\hl{Python}, TypeScript, JavaScript, Kotlin, Rust, C++, SQL}
+  \skillrow{Web}{\hl{React}, Angular, Node.js, FastAPI, Flask, Tailwind CSS}
+  \skillrow{AI}{\hl{Agentic coding} (Claude Code, Codex), \hl{agenti LLM}, machine learning, computer vision}
+  \skillrow{Cloud}{\hl{AWS}, Google Cloud Vertex AI, Cloudflare Workers, \hl{Docker}, CI/CD}
+  \skillrow{GIS}{OpenLayers, GeoPandas, GeoServer, PMTiles, GNSS}
+  \skillrow{Sicurezza}{\hl{Bug bounty}, CTF, reverse~engineering}
+  \skillrow{Mobile}{Capacitor (Android, iOS), Kotlin + Compose}
+  \skillrow{Soft skill}{guida del team, mentoring, problem solving}
+
+  \section{Formazione}
+  \timelinedot~\textbf{Laurea in Ingegneria Informatica e dell'Automazione}\\
+  \textit{Università Sapienza di Roma}
+
+  \section{Lingue}
+  \begin{tabular}{@{}p{0.4\textwidth}p{0.6\textwidth}@{}}
+    Italiano & \rating{5} \\
+    Rumeno & \rating{5} \\
+    Inglese & \rating{4} \\
+  \end{tabular}
+
+  \section{Riconoscimenti \& Attività}
+  \begin{itemize}[leftmargin=1.5em]
+    \item \hl{Bug Bounty Hunter}: nel tempo libero ho trovato e segnalato molte vulnerabilità, diverse delle quali \textbf{CVSS 10.0} (Cyberdart.eu)
+    \item \hl{Vincitore Google Workshop} per UniverCity, presentato presso Google~Tel~Aviv
+    \item Co-Fondatore di \hl{Hackappatoi}, il team di ethical hacking e CTF di~Sapienza
+  \end{itemize}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.65\textwidth}
+  \raggedright
+  % Right column content
+  \section{Esperienze}
+
+  \experienceitem{Ingegnere Software}{PR.EL.CART. EUROPE ENGINEERING S.R.L.}{Giu 2025 - Presente}{Roma, Italia}{
+    \item Sviluppo di soluzioni software con il Ministero dell'Agricoltura italiano
+    \item Guida e mentoring di un team di \textbf{3} sviluppatori junior
+    \item Sviluppo in autonomia dell'app ufficiale \href{https://agea-vinitaly-2026.sian.it/}{AGEA Vinitaly 2026}, con PMTiles
+    \item Introdotta una pipeline AI su Google Cloud Vertex AI che porta le immagini Sentinel da 10m a \textbf{1m}, riducendo i costi da ~\textbf{4/5M€} a ~\textbf{500€/mese}
+  }
+
+  \vspace{0.25cm}
+
+  \experienceitem{Ingegnere Software}{Tiuke S.R.L.}{Ott 2019 - Giu 2025}{Roma, Italia}{
+    \item \textbf{5+} app web e mobile per il Ministero, usate da oltre \textbf{10.000} utenti
+    \item Applicazioni legacy rifatte come web app responsive: caricamenti \textbf{-40\%}
+    \item Automatizzata l'integrazione dei layer cartografici: sviluppo \textbf{3x} più rapido
+    \item Generazione automatica di report: \textbf{15 ore} di lavoro in meno a settimana
+    \item Agenti LLM per l'estrazione di dati agricoli: \textbf{95\%} di accuratezza
+    \item Addestramento dei modelli di segmentazione migliorato: precisione \textbf{+20\%}
+    \item Pipeline batch su terabyte di dati: tempi di esecuzione \textbf{-50\%}
+  }
+
+  % Right column content
+  \section{Progetti \hfill \normalfont\small\href{https://github.com/1vcian}{Vedi altri su GitHub}}
+
+  \projectitem{Brucia}{Attivo}{App Android + firmware ESP32 per ricerca di sicurezza autorizzata}{https://1vcian.me/Brucia/}{https://github.com/1vcian/Brucia}
+    \item LilyGO (\textbf{50€}) + telefono vs Flipper Zero (\textbf{200€}): \textbf{32x} RAM, Wi-Fi integrato
+    \item \textbf{17} release, \textbf{69} build firmware ciascuna, \textbf{1.200} test automatici dell'app
+  \end{itemize}
+
+  \vspace{0.2cm}
+
+  \projectitem{Card Scanner [GitHub: $\star$ 66]}{Completato}{Riconoscimento carte Pokémon, eseguito interamente nel browser}{https://1vcian.github.io/Pokemon-TCGP-Card-Scanner/}{https://github.com/1vcian/Pokemon-TCGP-Card-Scanner}
+    \item Modello \textbf{<10MB}, tutto lato client, nessun riaddestramento per i nuovi set
+    \item Scanner principale di \href{https://github.com/marcelpanse/tcg-pocket-collection-tracker}{TCG Pocket Collection Tracker} ($\star$ \textbf{160+}) e altre app
+  \end{itemize}
+
+  \vspace{0.2cm}
+
+  \projectitem{EGNSS Capacitor}{Completato}{Plugin GNSS per Capacitor con Galileo OSNMA ed EGNOS}{https://1vcian.me/egnss-capacitor/}{https://github.com/1vcian/egnss-capacitor}
+    \item Da \textbf{5 m} del solo telefono a \textbf{1 m} con EGNOS e \textbf{1 cm} con un'antenna RTK
+    \item \textbf{1} API su Android, iOS e Web; \textbf{4} livelli di affidabilità per posizione (OSNMA)
+    \item Stabilizza la posizione con il centroide convex-hull di EGNSS4ALL (NMEA)
+  \end{itemize}
+
+  \vspace{0.2cm}
+
+  \projectitem{Parolix}{Live}{Gioco di parole su App Store e Google Play, in 17 lingue}{https://1vcian.me/parolix/}{null}
+    \item Salvataggi cloud firmati (SHA-256): \textbf{1} lettura e \textbf{1} scrittura per sessione
+    \item Classifica come JSON statico rigenerato ogni ora dalla CI: \textbf{zero} letture DB
+    \item Pipeline CI che pubblica i suoi YouTube Shorts: oltre \textbf{100} video
+  \end{itemize}
+
+  \vspace{0.2cm}
+
+  \projectitem{im.center}{Live}{Pagine link-in-bio su una classifica pay-to-rank, con Stripe}{https://im.center/}{null}
+    \item Gira sul piano gratuito Cloudflare: \textbf{100k} richieste/giorno, \textbf{10 ms} di CPU
+    \item Oltre \textbf{900} test automatici; scritture DB a riposo ridotte di circa il \textbf{75\%}
+  \end{itemize}
+
+  \vspace{0.2cm}
+
+  \projectitem{ForgeMaster Calculator \& Wiki [GitHub: $\star$ 21, 16 fork]}{Attivo}{Web app compagna del gioco mobile Forge Master}{https://1vcian.me/fm}{https://github.com/1vcian/fm}
+    \item Motore di combattimento ricostruito dal codice compilato del gioco
+    \item Si aggiorna da solo a ogni nuova versione del gioco: \textbf{29} versioni finora
+  \end{itemize}
+
+  \vspace{0.2cm}
+
+  \projectitem{Eatventure Loot Predictor}{Completato}{Pianificatore per un gioco mobile da 10M+ installazioni}{https://eatventure-loot-predictor.vercel.app/}{https://github.com/1vcian/eatventure-vercel}
+    \item Generatore di numeri casuali del gioco ricostruito in JavaScript
+    \item Ricerca DFS/BFS del percorso più breve: meno di \textbf{5} tentativi invece di \textbf{200}
+  \end{itemize}
+
+  \vspace{0.2cm}
+
+  \projectitem{Wolf \& Mafia}{Completato}{Gioco offline di Lupus in Tabula per Android e iOS}{https://wolfmafia.app/}{null}
+    \item \textbf{36} ruoli e narratore guidato; stato deterministico, 0 server, accesso via QR
+  \end{itemize}
+
+
+\end{minipage}
+
+\vfill
+\begin{center}
+  \small\textit{Per visualizzare il mio biglietto da visita digitale, apri il terminale e digita: \texttt{npx 1vcian}}
+\end{center}
+
+\end{document}

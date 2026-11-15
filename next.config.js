@@ -1,16 +1,17 @@
 /** @type {import('next').NextConfig} */
+
+// The site is served from https://1vcian.me/Portfolio/ (GitHub Pages project site),
+// so every asset has to be prefixed. Components read it via lib/site.ts.
+const basePath = "/Portfolio";
+
 const nextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
-  images: {
-    unoptimized: true,
-  },
-  output: 'export',
-  basePath: '/Portfolio',
-  assetPrefix: '/Portfolio/',
+  output: "export",
+  trailingSlash: true,
+  images: { unoptimized: true },
+  basePath,
+  assetPrefix: `${basePath}/`,
+  env: { NEXT_PUBLIC_BASE_PATH: basePath },
 };
-
-// Always use basePath and assetPrefix to ensure all resources are properly referenced
-// This ensures images and files in public folder are correctly accessed
 
 module.exports = nextConfig;

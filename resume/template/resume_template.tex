@@ -1,0 +1,265 @@
+% ─────────────────────────────────────────────────────────────────────────────
+%  One-page, two-column résumé template
+%  by Lucian Medrihan · https://1vcian.me/Portfolio
+%
+%  Free to use and adapt for your own résumé.
+%
+%  Compile with pdfLaTeX (twice, so the links settle):
+%      pdflatex resume_template.tex
+%  or just open it in Overleaf: it is a single file with no custom class.
+%
+%  How to make it yours
+%    1. Search for "EDIT" and replace the placeholder text.
+%    2. Change the two colours below if you want a different look.
+%    3. Add or remove \experienceitem / \projectitem blocks to fit one page.
+%       If the page overflows, cut content before shrinking the font.
+% ─────────────────────────────────────────────────────────────────────────────
+
+\documentclass[a4paper,10pt]{extarticle}
+
+% Packages
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{fontawesome5}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{tikz}
+\usepackage{lmodern}
+
+% ── Colours ──────────────────────────────────────────────────────────────────
+% primary   : name, section titles, timeline dots, filled stars
+% linkcolor : links and the highlighted keywords
+\definecolor{primary}{RGB}{11, 25, 47}
+\definecolor{darkgray}{RGB}{50, 50, 50}
+\definecolor{lightgray}{RGB}{245, 245, 245}
+\definecolor{linkcolor}{RGB}{70, 130, 210}
+
+% Shorthand for a highlighted keyword: \hl{Python}
+\newcommand{\hl}[1]{\textcolor{linkcolor}{\textbf{#1}}}
+
+% ── Links ────────────────────────────────────────────────────────────────────
+\hypersetup{
+  colorlinks=true,
+  linkcolor=linkcolor,
+  filecolor=linkcolor,
+  urlcolor=linkcolor,
+  citecolor=linkcolor,
+  pdftitle={Your Name CV},     % EDIT
+  pdfauthor={Your Name},       % EDIT
+  pdfborder={0 0 1},
+  breaklinks=true,
+  bookmarksopen=true,
+  bookmarksnumbered=true
+}
+
+% ── Page ─────────────────────────────────────────────────────────────────────
+\geometry{
+  top=0.6cm,
+  bottom=0.6cm,
+  left=1cm,
+  right=1cm
+}
+
+\setlength{\parindent}{0pt}
+
+% Break lines only between words: no hyphenated words, no stretched spacing
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
+\raggedright
+
+% Section titles: bold, coloured, with a rule underneath
+\titleformat{\section}
+  {\large\bfseries\color{primary}}
+  {}{0em}{}[\titlerule]
+\titlespacing{\section}{0pt}{6pt}{3pt}
+
+% ── Building blocks ──────────────────────────────────────────────────────────
+
+% A small grey pill: \skill{Docker}
+\newcommand{\skill}[1]{
+  \colorbox{lightgray}{\footnotesize #1}
+}
+
+% The dot that starts a timeline entry
+\newcommand{\timelinedot}{
+  \tikz\draw[primary, fill=primary] (0,0) circle (2pt);
+}
+
+% \experienceitem{Role}{Company}{Dates}{Place}{ \item ... \item ... }
+\newcommand{\experienceitem}[5]{
+  \timelinedot~\textbf{#1}\\
+  \textit{#2} \hfill \textit{#3}\\
+  #4\\
+  \begin{itemize}[leftmargin=1em,noitemsep,topsep=0pt,parsep=0pt]
+    #5
+  \end{itemize}
+}
+
+% \projectitem{Name}{Status}{One-line description}{website or null}{GitHub or null}
+%   \item ...
+%   \item ...
+% \end{itemize}
+%
+% The macro opens the bullet list for you: write the \item lines right after it
+% and close them with \end{itemize}. Pass the word null to hide an icon.
+\newcommand{\projectitem}[5]{
+  \textbf{#1} \hfill \textit{#2}\\
+  #3 \hfill
+  \ifnum\pdfstrcmp{#4}{null}=0\else\href{#4}{\faGlobe}\fi
+  \ifnum\pdfstrcmp{#5}{null}=0\else~\href{#5}{\faGithub}\fi\\
+  \begin{itemize}[leftmargin=1em,noitemsep,topsep=0pt,parsep=0pt]
+}
+
+% Five stars, the first #1 filled: \rating{4}
+\newcommand{\rating}[1]{
+  \foreach \n in {1,...,5}{
+    \ifnum\n>#1
+      \textcolor{lightgray}{$\star$}
+    \else
+      \textcolor{primary}{$\star$}
+    \fi
+  }
+}
+
+% One line of the Skills section: \skillrow{Label}{comma-separated items}
+\newcommand{\skillrow}[2]{\textbf{#1:} #2\par\vspace{0.35em}}
+
+\begin{document}
+
+% ═════════════════════════════ LEFT COLUMN ═══════════════════════════════════
+\begin{minipage}[t]{0.33\textwidth}
+  \raggedright
+  \begin{center}
+    {\fontsize{21}{20}\selectfont\textbf{\textcolor{primary}{Your Name}}}\\   % EDIT
+    \vspace{0.2cm}
+    {\large Your Job Title}                                                    % EDIT
+  \end{center}
+
+  \section{About Me}
+  % EDIT: two sentences. Lead with what you do and for whom.
+  Engineer with N+ years building things that people actually use, for clients a reader will recognise. Say what you care about, in plain words.
+
+  \section{Contact}
+  % EDIT
+  \begin{tabular}{@{}p{0.1\textwidth}p{0.9\textwidth}@{}}
+    \faPhone & \href{tel:+00000000000}{+00 000 0000000} \\
+    \faEnvelope & \href{mailto:you@example.com}{you@example.com} \\
+    \faGlobe & \href{https://example.com}{example.com} \\
+    \faLinkedin & \href{https://linkedin.com/in/yourname}{linkedin.com/in/yourname} \\
+    \faGithub & \href{https://github.com/yourname}{github.com/yourname} \\
+    \faMapMarker & City, Country \\
+  \end{tabular}
+
+  \section{Skills}
+  % EDIT: one short row per area reads faster than a paragraph. Use \hl{}
+  % on the few words you want a skimming reader to catch.
+  \skillrow{Languages}{\hl{Language A}, Language B, Language C, Language D}
+  \skillrow{Web}{\hl{Framework A}, Framework B, Framework C}
+  \skillrow{AI}{\hl{Topic A}, Topic B, Topic C}
+  \skillrow{Cloud}{\hl{Platform A}, Platform B, Tool C, CI/CD}
+  \skillrow{Domain}{Tool A, Tool B, Tool C, Tool D}
+  \skillrow{Soft skills}{leadership, mentoring, problem solving}
+
+  \section{Education}
+  % EDIT
+  \timelinedot~\textbf{Degree in Your Field}\\
+  \textit{Your University}
+
+  \section{Languages}
+  % EDIT: \rating takes a number from 0 to 5
+  \begin{tabular}{@{}p{0.4\textwidth}p{0.6\textwidth}@{}}
+    Language One & \rating{5} \\
+    Language Two & \rating{4} \\
+    Language Three & \rating{3} \\
+  \end{tabular}
+
+  \section{Achievements \& Activities}
+  % EDIT
+  \begin{itemize}[leftmargin=1.5em]
+    \item \hl{Award or result}: one line on what it was and why it matters
+    \item \hl{Competition or talk}, with where it took you
+    \item Founder or member of \hl{a team or community}, and what it does
+  \end{itemize}
+
+\end{minipage}
+\hfill
+% ═════════════════════════════ RIGHT COLUMN ══════════════════════════════════
+\begin{minipage}[t]{0.65\textwidth}
+  \raggedright
+  \section{Experiences}
+
+  % EDIT: newest first. One line per bullet: an action and a number.
+  \experienceitem{Your Current Role}{Company Name}{Mon 20XX - Present}{City, Country}{
+    \item What you build and for whom, in one line
+    \item A responsibility that shows scope: team size, budget, users
+    \item Something you shipped on your own, with a \href{https://example.com}{link} if it is public
+    \item A result with a number: cost cut from X to Y, time saved, accuracy
+  }
+
+  \vspace{0.25cm}
+
+  \experienceitem{Your Previous Role}{Previous Company}{Mon 20XX - Mon 20XX}{City, Country}{
+    \item Built N applications for a client, used by N people
+    \item Refactored or migrated something: a metric improved by N\%
+    \item Built internal tooling that made a recurring task N times faster
+    \item Automated a manual process, saving N hours a week
+    \item Introduced a new technology: what it achieved, with a number
+    \item Processed a large volume of data: run time cut by N\%
+  }
+
+  \section{Projects \hfill \normalfont\small\href{https://github.com/yourname}{View more on GitHub}}
+
+  % EDIT: the last two arguments are the website and the GitHub URL.
+  % Write null for the one you do not have and its icon disappears.
+  \projectitem{Project One [GitHub: $\star$ 00]}{Active}{What it is, in one line}{https://example.com}{https://github.com/yourname/project-one}
+    \item What makes it technically interesting, with a number
+    \item Who uses it, or how much of it there is
+  \end{itemize}
+
+  \vspace{0.2cm}
+
+  \projectitem{Project Two}{Live}{What it is, in one line}{https://example.com}{null}
+    \item The problem it solves and the result it gets
+    \item The part you automated or measured
+  \end{itemize}
+
+  \vspace{0.2cm}
+
+  \projectitem{Project Three}{Live}{What it is, in one line}{https://example.com}{null}
+    \item The constraint you worked within, in numbers
+    \item How you know it works: tests, users, uptime
+  \end{itemize}
+
+  \vspace{0.2cm}
+
+  \projectitem{Project Four}{Completed}{What it is, in one line}{https://example.com}{https://github.com/yourname/project-four}
+    \item What you built from scratch and its headline number
+    \item Where else it ended up being used
+  \end{itemize}
+
+  \vspace{0.2cm}
+
+  \projectitem{Project Five}{Completed}{What it is, in one line}{null}{https://github.com/yourname/project-five}
+    \item One line is enough for a smaller project: what it does, with a number
+  \end{itemize}
+
+  \vspace{0.2cm}
+
+  \projectitem{Project Six}{Completed}{What it is, in one line}{null}{https://github.com/yourname/project-six}
+    \item What you made and the recognition it received
+  \end{itemize}
+
+\end{minipage}
+
+\vfill
+\begin{center}
+  % EDIT: an optional closing line, or delete this block
+  \small\textit{A short sign-off: where to find more, or a fun way to reach you.}
+\end{center}
+
+\end{document}

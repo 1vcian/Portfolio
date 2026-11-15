@@ -8,20 +8,43 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: deploy
+  cancel-in-progress: true
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
+
+      # The résumé is written in LaTeX (resume/). Compiling it here means the PDF
+      # on the site always matches the .tex in the repository: edit, push, done.
+      - name: Compile the résumé (LaTeX → PDF)
+        uses: xu-cheng/latex-action@v4
+        with:
+          working_directory: resume
+          work_in_root_file_dir: true
+          root_file: |
+            resume_eng.tex
+            resume_it.tex
+            template/resume_template.tex
+
+      - name: Install poppler (PDF → preview image)
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq poppler-utils
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
-          node-version: '22.x'
+          node-version: 22
+          cache: npm
 
-      - name: Install Dependencies
+      - name: Install dependencies
         run: npm ci
+
+      - name: Publish the résumé into public/
+        run: node scripts/build-resume.mjs --collect
 
       - name: Build
         run: npm run build
