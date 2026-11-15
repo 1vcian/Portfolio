@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { site } from "../../lib/site";
 import Reveal from "../ui/Reveal";
-import { ArrowUp, Check, Copy, Github, Instagram, Linkedin, Mail } from "../ui/icons";
+import { ArrowUp, Check, Copy, Github, Linkedin, Mail } from "../ui/icons";
 
 const COMMAND = "npx 1vcian";
 
@@ -68,9 +68,11 @@ export default function Contact() {
           <a href={site.socials.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn">
             <Linkedin />
           </a>
+          {/* Instagram is switched off for now. To bring it back, uncomment this and add Instagram to the icons import.
           <a href={site.socials.instagram} target="_blank" rel="noreferrer" aria-label="Instagram">
             <Instagram />
           </a>
+          */}
           {/* Live badge: im.center renders the current rank into the image. */}
           <a className="socials__badge" href="https://im.center/1vcian" target="_blank" rel="noreferrer">
             <img src="https://im.center/b/1vcian.svg" alt="Lucian on im.center" height={36} loading="lazy" />
