@@ -26,7 +26,7 @@ export default function Contact() {
           <span className="hand">say hi</span>
         </Reveal>
         <Reveal as="h2" className="contact__title">
-          Let&apos;s build something that <em>ships</em>.
+          Let&apos;s build something <em>together</em>.
         </Reveal>
         <Reveal as="p" className="contact__lead">
           I&apos;m always open to new opportunities. Whether you have a role, a question or just want to say hi, my inbox is open

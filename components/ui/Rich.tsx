@@ -34,7 +34,7 @@ export default function Rich({ text }: { text: string }) {
           const m = /^\[([^\]]+)\]\(([^)]+)\)$/.exec(part);
           if (m)
             return (
-              <a key={i} href={m[2]} target="_blank" rel="noreferrer">
+              <a key={i} href={m[2]} {...(m[2].startsWith("#") ? {} : { target: "_blank", rel: "noreferrer" })}>
                 {tidy(m[1])}
               </a>
             );

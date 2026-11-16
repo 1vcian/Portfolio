@@ -916,6 +916,23 @@ h2 em::after {
   font-weight: 800;
 }
 
+/* A link to another part of this page points down, not out. */
+.prose a[href^="#"]::after {
+  content: " ↓";
+}
+
+.fact span a {
+  font-weight: 800;
+  color: inherit;
+  text-decoration: underline solid;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+.fact span a::after {
+  content: " ↗";
+}
+
 .prose a:hover,
 .job li a:hover {
   text-decoration-thickness: 3.5px;

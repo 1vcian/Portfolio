@@ -34,7 +34,9 @@ export default function About() {
           {about.facts.map((fact, i) => (
             <Reveal key={fact.value} className="fact" variant="pop" delay={i * 90}>
               <strong>{fact.value}</strong>
-              <span>{fact.label}</span>
+              <span>
+                <Rich text={fact.label} />
+              </span>
             </Reveal>
           ))}
         </div>

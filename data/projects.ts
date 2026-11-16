@@ -170,7 +170,7 @@ export const featured: Project[] = [
     kicker: "Open source · Computer vision",
     status: { label: "Done · ★ 66", tone: "done" },
     paragraphs: [
-      "An **AI card recognition system** for Pokémon TCG Pocket that identifies cards from an image and keeps working with **every new set, no retraining**. It runs entirely client-side in **under 10 MB**, combining an OBB detection model with custom perceptual image matching.",
+      "**The idea: the model only finds the cards, it never learns them.** An OBB detection model locates each card's shape in the image, and a **perceptual hash** matches the crop against the card database. A new set only needs its pictures in the database: **no retraining**. It all runs client-side, in **under 10 MB**.",
       "It became the core scanner of the popular open-source [TCG Pocket Collection Tracker](https://github.com/marcelpanse/tcg-pocket-collection-tracker) (★ 160+), and it kept travelling: developers of other apps have written to tell me they built the same solution into theirs.",
     ],
     figures: [
@@ -243,10 +243,11 @@ export const featured: Project[] = [
     kicker: "At work · Satellite imagery",
     status: { label: "Done", tone: "done" },
     paragraphs: [
-      "An **AI super-resolution pipeline** on Google Cloud Vertex AI that upscales 10 m Sentinel-2 photos to **1 m resolution**. I found the approach and brought it into the company.",
-      "It took operational costs from about **€4M** (30 cm imagery, once every three years) down to about **€500 a month**, so users get high-quality, updated imagery every single month.",
+      "**Fresh satellite imagery every month, instead of every three years.** A pipeline on Google Cloud Vertex AI selects the best Sentinel-2 scenes each month and upscales them from 10 m to **1 m** with a super-resolution model. I found the approach and built the pipeline around it.",
+      "The alternative was a 30 cm orthophoto: about **€4M** per cycle, renewed once every three years. A 1 m image does not replace 30 cm for fine parcel boundaries, but crops change every season, and a monthly picture shows what is in a field today, for about **€500 a month**.",
     ],
     figures: [
+      { value: "Monthly", label: "updates, not every three years" },
       { value: "10 m → 1 m", label: "ground resolution" },
       { value: "≈ €500/mo", label: "instead of ≈ €4M per cycle" },
     ],
@@ -285,7 +286,7 @@ export const more: SmallProject[] = [
     slug: "eatventure",
     title: "Eatventure Loot Predictor",
     kicker: "Reverse engineering",
-    text: "Unity's RNG reverse-engineered in JavaScript, with optimised DFS searches, for a game with 10M+ installs: any high-tier item in fewer than 5 chests instead of about 200.",
+    text: "The game's Unity random number generator rebuilt in JavaScript, then searched with optimised DFS: for a game with 10M+ installs, the shortest path to any high-tier item, in fewer than 5 chests instead of about 200.",
     tags: ["RNG", "DFS", "Game tool"],
     links: { live: "https://eatventure-loot-predictor.vercel.app/", github: "https://github.com/1vcian/eatventure-vercel" },
     image: "/projects/eatventure.webp",
