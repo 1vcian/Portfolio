@@ -244,12 +244,12 @@ export const featured: Project[] = [
     status: { label: "Done", tone: "done" },
     paragraphs: [
       "**Fresh satellite imagery every month, instead of every three years.** A pipeline on Google Cloud Vertex AI selects the best Sentinel-2 scenes each month and upscales them from 10 m to **1 m** with a super-resolution model. I found the approach and built the pipeline around it.",
-      "The alternative was a 30 cm orthophoto: about **€4M** per cycle, renewed once every three years. A 1 m image does not replace 30 cm for fine parcel boundaries, but crops change every season, and a monthly picture shows what is in a field today, for about **€500 a month**.",
+      "The alternative was a 30 cm orthophoto: about **€4M**, renewed once every three years. Over the same three years the pipeline delivers **36 updates for about €18k** (about €500 a month). A 1 m image does not replace 30 cm for fine parcel boundaries, but crops change every season, and a monthly picture shows what is in a field today.",
     ],
     figures: [
       { value: "Monthly", label: "updates, not every three years" },
       { value: "10 m → 1 m", label: "ground resolution" },
-      { value: "≈ €500/mo", label: "instead of ≈ €4M per cycle" },
+      { value: "€18k vs €4M", label: "36 monthly updates vs one orthophoto, over three years" },
     ],
     tags: ["AI super-resolution", "Google Vertex AI", "Sentinel-2", "Python"],
     links: {},

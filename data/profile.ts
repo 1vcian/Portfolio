@@ -9,7 +9,7 @@ export const about = {
   facts: [
     { value: "5+ yrs", label: "building GIS and AI systems that run in production" },
     { value: "Bug hunter", label: "bug bounty in my free time, with findings up to CVSS 10.0, reported privately and on other platforms; now active on [CyberDart](https://cyberdart.eu/hackers/0bee51c0-609f-4b44-ace4-2cae56bddd91)" },
-    { value: "Every month", label: "fresh 1 m satellite imagery for ≈ €500, instead of a 30 cm orthophoto every three years (≈ €4M)" },
+    { value: "Every month", label: "fresh 1 m satellite imagery: 36 updates for ≈ €18k, instead of one 30 cm orthophoto every three years for ≈ €4M" },
     { value: "Google Workshop", label: "winner with UniverCity, presented at Google Tel Aviv" },
   ],
   stack: [
@@ -37,7 +37,7 @@ export const jobs: Job[] = [
       "Built **management systems for logistics and plant maintenance**, integrating **SCADA** sensor data into a **24/7 control room** that monitors production and transport.",
       "Leading **3 junior developers**: code reviews, technical guidance on architecture, and planning and delegating the work.",
       "Independently developed a web app for **Vinitaly 2026**, using **PMTiles** to show every plot of land in Italy.",
-      "Built a pipeline on **Google Cloud Vertex AI** that selects the best Sentinel-2 scenes **every month** and upscales them to **1 m** with a super-resolution model: monthly imagery for about **€500**, instead of a 30 cm orthophoto every three years (about €4M per cycle).",
+      "Built a pipeline on **Google Cloud Vertex AI** that selects the best Sentinel-2 scenes **every month** and upscales them to **1 m** with a super-resolution model: **36 monthly updates for about €18k**, instead of one 30 cm orthophoto every three years for about €4M.",
     ],
   },
   {
