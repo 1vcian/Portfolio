@@ -39,8 +39,7 @@ export default function Resume() {
               to install. Open it in Overleaf or compile it with <code>pdflatex</code>.
             </p>
             <p className="template__proof">
-              Field-tested: sent as a cold application, it opened the door at Amazon and Google, and went through every
-              interview round at Google.
+              Field-tested: as a cold application with no referral, it got past the screening at Amazon and Google.
             </p>
             <div className="links">
               <a className="chip-link chip-link--primary" href={resume.template.overleaf} target="_blank" rel="noreferrer">
