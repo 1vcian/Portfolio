@@ -35,7 +35,7 @@ export const jobs: Job[] = [
     place: "Rome, Italy",
     points: [
       "Built **management systems for logistics and plant maintenance**, integrating **SCADA** sensor data into a **24/7 control room** that monitors production and transport.",
-      "Managing and mentoring a team of **3 junior developers**, guiding them through software architecture.",
+      "Leading **3 junior developers**: code reviews, technical guidance on architecture, and planning and delegating the work.",
       "Independently developed a web app for **Vinitaly 2026**, using **PMTiles** to show every plot of land in Italy.",
       "Built a pipeline on **Google Cloud Vertex AI** that selects the best Sentinel-2 scenes **every month** and upscales them to **1 m** with a super-resolution model: monthly imagery for about **€500**, instead of a 30 cm orthophoto every three years (about €4M per cycle).",
     ],
@@ -47,11 +47,8 @@ export const jobs: Job[] = [
     place: "Rome, Italy",
     points: [
       "Developed **5+ web and mobile applications** for agriculture, serving over **10,000 active users**.",
-      "Refactored legacy monoliths into responsive web apps, cutting page load times by **40%**.",
-      "Built automation tools for integrating mapping layers that made development **3× faster**.",
-      "Wrote backend systems for automated report generation, saving about **15 hours of manual work a week**.",
-      "Implemented specialised **LLM agents** for agricultural data extraction, reaching **95% accuracy**.",
-      "Improved training of geospatial segmentation models, raising parcel detection precision by **20%**.",
+      "Implemented specialised **LLM agents** for agricultural data extraction, reaching **95% accuracy** on held-out validation data.",
+      "Improved training of geospatial segmentation models, raising parcel detection precision by **20%** on validation data.",
       "Wrote batch pipelines that process **terabytes** of geospatial data, halving execution time.",
     ],
   },
