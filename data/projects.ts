@@ -291,7 +291,7 @@ export const more: SmallProject[] = [
     kicker: "Reverse engineering",
     text: "The game's Unity random number generator rebuilt in JavaScript, then searched with optimised DFS: for a game with 10M+ installs, the shortest path to any high-tier item, in fewer than 5 chests instead of about 200.",
     tags: ["RNG", "DFS", "Game tool"],
-    links: { live: "https://eatventure-loot-predictor.vercel.app/", github: "https://github.com/1vcian/eatventure-vercel" },
+    links: { live: "https://1vcian.me/ev/", github: "https://github.com/1vcian/eatventure-vercel" },
     image: "/projects/eatventure.webp",
   },
   {
