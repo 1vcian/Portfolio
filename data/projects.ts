@@ -127,14 +127,16 @@ export const featured: Project[] = [
     kicker: "iOS & Android · Party game",
     status: { label: "On the stores", tone: "live" },
     paragraphs: [
-      "A **100% offline** social deduction game (Mafia, Werewolf, Lupus in Tabula) built from scratch, with **36 unique roles** and a fully guided narrator.",
-      "The whole game runs on a **deterministic, seed-based state generator**: no server, no connection. Players join by **scanning a QR code**, with rollback and automatic polling so a group can play anywhere.",
+      "**The narrator in your pocket** for the party game of wolves, villagers and secret roles (Mafia, Werewolf, Lupus in Tabula), built from scratch: **35 characters**, a guided night step by step, and protections, deaths and wins worked out by the app. **100% offline**.",
+      "**Phones talk to each other through sound, with no network.** I designed a compact binary protocol (a hash of the game's identity, idempotent sequence numbers, bit masks, CRC8) that travels on a **near-ultrasonic audio modem** (ggwave): at dawn the narrator's phone updates every player's phone with no internet, Wi-Fi or Bluetooth. The microphone is on only while it is needed, within iOS's rules.",
+      "Underneath, a **deterministic, seed-based game state**: no server at all. Players join by **scanning a QR code**, or pass a single phone around the table.",
     ],
     figures: [
-      { value: "36", label: "unique roles" },
+      { value: "By sound", label: "phone-to-phone updates, no network" },
+      { value: "35", label: "characters" },
       { value: "0", label: "servers needed" },
     ],
-    tags: ["iOS", "Android", "Offline multiplayer", "QR connect", "Game dev"],
+    tags: ["iOS", "Android", "Audio modem (ggwave)", "Binary protocol", "Offline multiplayer", "QR connect"],
     links: {
       live: "https://wolfmafia.app/",
       appStore: "https://apps.apple.com/us/app/wolf-mafia/id6756895478",
