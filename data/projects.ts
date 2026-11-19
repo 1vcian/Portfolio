@@ -81,7 +81,7 @@ export const featured: Project[] = [
     kicker: "iOS & Android · Word game",
     status: { label: "On the stores", tone: "live" },
     paragraphs: [
-      "A **vintage-newspaper word puzzle in 17 languages**: daily riddles, endless runs, 25 collectable editions and one world leaderboard with weekly prizes. Under the hood the backend is built to cost next to nothing: cloud saves are **signed with SHA-256** in a 10-slot ring at one read and one write per session, and the leaderboard is **static JSON that CI rebuilds every hour**, so reading it never touches the database.",
+      "A **vintage-newspaper word puzzle in 17 languages**: daily riddles, endless runs, 26 collectable editions and one world leaderboard with weekly prizes. Under the hood the backend is built to cost next to nothing: cloud saves are **signed with SHA-256** in a 10-slot ring at one read and one write per session, and the leaderboard is **static JSON that CI rebuilds every hour**, so reading it never touches the database.",
       "It also **markets itself**. A GitHub Actions pipeline scripts an episode, plays it in headless Chromium on virtual time (frame-perfect 60 fps on a runner with no GPU), edits it with ffmpeg and schedules it on **YouTube Shorts** at each language's peak hour. **100+ Shorts published** so far, hands-off.",
     ],
     figures: [
