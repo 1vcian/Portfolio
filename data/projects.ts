@@ -81,8 +81,8 @@ export const featured: Project[] = [
     kicker: "iOS & Android · Word game",
     status: { label: "On the stores", tone: "live" },
     paragraphs: [
-      "A **vintage-newspaper word puzzle in 17 languages**: daily riddles, endless runs, 26 collectable editions and one world leaderboard with weekly prizes. Under the hood the backend is built to cost next to nothing: cloud saves are **signed with SHA-256** in a 10-slot ring at one read and one write per session, and the leaderboard is **static JSON that CI rebuilds every hour**, so reading it never touches the database.",
-      "It also **markets itself**. A GitHub Actions pipeline scripts an episode, plays it in headless Chromium on virtual time (frame-perfect 60 fps on a runner with no GPU), edits it with ffmpeg and schedules it on **YouTube Shorts** at each language's peak hour. **100+ Shorts published** so far, hands-off.",
+      "A **vintage-newspaper word puzzle in 17 languages**: daily riddles, endless runs, 32 living editions (each with its own animated scene, six of them earned only through streak and score milestones) and one world leaderboard with weekly prizes. Under the hood the backend is built to cost next to nothing: cloud saves are **signed with SHA-256** in a 10-slot ring at one read and one write per session, and the leaderboard is **static JSON that CI rebuilds every hour**, so reading it never touches the database.",
+      "It also **markets itself**. A GitHub Actions pipeline scripts an episode, plays it in headless Chromium on virtual time (frame-perfect 60 fps on a runner with no GPU), edits it with ffmpeg and schedules it on **YouTube Shorts** at each language's peak hour, rotating eight formats (commented game, guess-it countdown, real-or-fake, anagram, edition showcase, word meaning, endless run, shareable front page). **100+ Shorts published** so far, hands-off.",
     ],
     figures: [
       { value: "17", label: "languages" },
@@ -97,7 +97,7 @@ export const featured: Project[] = [
     media: {
       type: "phones",
       srcs: ["/projects/parolix-home.webp", "/projects/parolix-game.webp", "/projects/parolix-upgrades.webp"],
-      alt: "Parolix: home screen, a game in progress and the editions shop",
+      alt: "Parolix: home screen, a game in progress and the editions catalogue",
     },
   },
   {
