@@ -63,7 +63,6 @@ export const featured: Project[] = [
       { value: "Wi-Fi", label: "tests beyond a Flipper or Bruce" },
       { value: "GPS", label: "wardriving on offline maps" },
       { value: "De Bruijn", label: "sweeps planned on the phone" },
-      { value: "1,200", label: "automated tests in the app" },
     ],
     tags: ["Kotlin", "Jetpack Compose", "C++ on ESP32", "PlatformIO", "AGPL-3.0"],
     links: { live: "https://1vcian.me/Brucia/", github: "https://github.com/1vcian/Brucia" },
@@ -129,12 +128,12 @@ export const featured: Project[] = [
     paragraphs: [
       "**The narrator in your pocket** for the party game of wolves, villagers and secret roles (Mafia, Werewolf, Lupus in Tabula), built from scratch: **39 characters**, a guided night step by step that the phone can **read aloud**, and protections, deaths and wins worked out by the app. **100% offline**, in 12 languages.",
       "**Phones talk to each other through sound, with no network.** I designed a compact binary protocol (a hash of the game's identity, idempotent sequence numbers, bit masks, CRC8) that travels on a **near-ultrasonic audio modem** (ggwave): at dawn the narrator's phone updates every player's phone with no internet, Wi-Fi or Bluetooth. A tablet or TV can show the table, and players without the app see their role [in the browser](https://wolfmafia.app/play/).",
-      "Underneath, an **event-sourced rules engine**: the game is a replay of the narrator's choices, so every step can be undone, and **4,000 simulated games** check the rules at every change. The role setups it proposes are balanced the same way, by simulation. No server at all.",
+      "Underneath, an **event-sourced rules engine**: the game is a replay of the narrator's choices, so every step can be undone, and the rules are checked by playing whole games automatically. The role setups it proposes are balanced the same way. No server at all.",
     ],
     figures: [
       { value: "By sound", label: "phone-to-phone updates, no network" },
       { value: "39", label: "characters" },
-      { value: "4,000", label: "simulated games per change" },
+      { value: "0", label: "servers needed" },
     ],
     tags: ["iOS", "Android", "Audio modem (ggwave)", "Binary protocol", "Event sourcing", "Offline multiplayer", "Text-to-speech"],
     links: {
@@ -199,7 +198,7 @@ export const featured: Project[] = [
     status: { label: "Work in progress", tone: "wip" },
     paragraphs: [
       "The goal: a **complete ARM64 Android system emulated inside a browser tab**, with an analysis layer that sees everything apps do from the outside. No install, no root, no server.",
-      "**It runs Android today.** Open the page in Chrome or Edge and the project's own AOSP 15 build with microG reaches its home screen from a prebuilt snapshot; you can install an APK by dragging it onto the page, and an app opens and reacts to touch. Underneath is an AArch64 CPU emulator in **Rust compiled to WebAssembly**, with a block JIT that emits WASM, checked against QEMU instruction by instruction: Linux 6.18 boots with a log identical to QEMU's and 355 LTP syscall tests match `qemu-aarch64` in CI.",
+      "**It runs Android today.** Open the page in Chrome or Edge and the project's own AOSP 15 build with microG reaches its home screen from a prebuilt snapshot; you can install an APK by dragging it onto the page, and an app opens and reacts to touch. Underneath is an AArch64 CPU emulator in **Rust compiled to WebAssembly**, with a block JIT that emits WASM, checked against QEMU instruction by instruction: Linux 6.18 boots with a log identical to QEMU's and the LTP syscall tests match `qemu-aarch64` in CI.",
       "Now in progress: the analysis layer. A network inspector and a timeline that ties each request to the tap that caused it, real internet through a small companion app on your own computer, a live file manager for app data, and record & replay down to a single instruction.",
     ],
     tags: ["Rust", "WebAssembly", "AArch64", "JIT", "AOSP", "Linux kernel"],
